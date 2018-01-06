@@ -5,10 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team8621.robot.commands;
+package org.usfirst.frc.team1157.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team8621.robot.Robot;
+import org.usfirst.frc.team1157.robot.Robot;
 
 /**
  * An example command.  You can replace me with your own command.
