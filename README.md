@@ -1,3 +1,6 @@
 # 2018-PowerDown
 
-Commit messages must only be emojis
+Robot code main repo 2018
+
+Commit messages must only be emojis ~Julien
+
