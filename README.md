@@ -10,6 +10,6 @@ Instructions for setting up your local dev environment:
 2. In eclipse, select `Window`>`Show View`>`Other`>`Git`>`Git Repositories`
 3. Select `Clone a Git Repository`
 4. In the URI field, fill in our repo url: https://github.com/Team1157/2018-PowerDown
-5. Click `Next`, `Next` again
+5. Click `Next`, `Next`, `Finish`
 6. Right click on `2018-PowerDown` and select `Import Projects...`
 7. Click `Finish`
