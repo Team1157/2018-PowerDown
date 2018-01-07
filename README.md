@@ -2,5 +2,5 @@
 
 Robot code main repo 2018
 
-Commit messages must only be emojis ~Julien
+Commit messages must be concise and descriptive ~Julien
 
