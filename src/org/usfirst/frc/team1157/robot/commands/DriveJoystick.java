@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1157.robot.commands;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
+import org.usfirst.frc.team1157.robot.OI;
 import org.usfirst.frc.team1157.robot.Robot;
 import org.usfirst.frc.team1157.robot.subsystems.DriveTrain;
 
@@ -9,8 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveJoystick extends Command {
-	xOI.stick2.getX()
-
+	double xSpeed = OI.stick1.getX();
+	double zRotation = OI.stick1.getZ();
+	boolean squaredInputs = true;
     public DriveJoystick() 
     {
         requires(Robot.DriveTrain);
@@ -26,7 +29,7 @@ public class DriveJoystick extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	DifferentialDrive.arcadeDrive(double xSpeed, double zRotation, boolean squaredInputs) {
+    	Robot.driveTrain.tankDrive.arcadeDrive(xSpeed, zRotation, squaredInputs);
     }
 
     // Make this return true when this Command no longer needs to run execute()
