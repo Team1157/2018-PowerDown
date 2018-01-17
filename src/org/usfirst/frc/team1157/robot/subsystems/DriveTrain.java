@@ -3,20 +3,36 @@ package org.usfirst.frc.team1157.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team1157.robot.RobotMap;
+import org.usfirst.frc.team1157.robot.commands.DriveJoystick;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.*;
 
 
 public class DriveTrain extends Subsystem {
 
-    public DifferentialDrive tankDrive;
-    WPI_TalonSRX rightMotor;
-    WPI_TalonSRX leftMotor;
+	public WPI_TalonSRX rightMotor = new WPI_TalonSRX(RobotMap.rightMotor);
+	public WPI_TalonSRX leftMotor = new WPI_TalonSRX(RobotMap.leftMotor);
+	//public WPI_TalonSRX rightSlave = new WPI_TalonSRX(RobotMap.rightSlave);
+	public WPI_TalonSRX leftSlave = new WPI_TalonSRX(RobotMap.leftSlave);
+
+    public DifferentialDrive tankDrive = new DifferentialDrive(leftMotor, rightMotor);
     
     public void initDefaultCommand() 
     {
+    	
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new DriveJoystick());
+        //rightSlave.set(ControlMode.Follower, RobotMap.rightMotor);
+        leftSlave.set(ControlMode.Follower, RobotMap.leftMotor);
+        
+        leftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+        
     }
+    
     
     public void driveForwardConstant() 
     {
@@ -53,8 +69,8 @@ public class DriveTrain extends Subsystem {
 
     public void stop() 
     {
-	rightMotor.set(0);
-	leftMotor.set(0);
+    	rightMotor.set(0);
+    	leftMotor.set(0);
     }
 }
 
