@@ -13,3 +13,5 @@ Instructions for setting up your local dev environment:
 5. Click `Next`, `Next`, `Finish`
 6. Right click on `2018-PowerDown` and select `Import Projects...`
 7. Click `Finish`
+
+to install the cre phoenix (for the speed controlers): http://www.ctr-electronics.com/control-system/hro.html#product_tabs_technical_resources
