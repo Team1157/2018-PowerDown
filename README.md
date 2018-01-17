@@ -16,4 +16,4 @@ Instructions for setting up your local dev environment:
 
 to install the cre phoenix (for the speed controlers): http://www.ctr-electronics.com/control-system/hro.html#product_tabs_technical_resources
 
-to install on mac use the "CTRE Phoenix Framework (No Installer)" link then place the java file in the wpilib/user file
+to install on mac use the `CTRE Phoenix Framework (No Installer)` link then place the java file in the wpilib/user file
