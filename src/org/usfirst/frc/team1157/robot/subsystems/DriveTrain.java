@@ -8,11 +8,10 @@ import com.ctre.phoenix.motorcontrol.can.*;
 
 public class DriveTrain extends Subsystem {
 
-
-
     public DifferentialDrive tankDrive;
-	WPI_TalonSRX rightMotor;
+    WPI_TalonSRX rightMotor;
     WPI_TalonSRX leftMotor;
+    
     public void initDefaultCommand() 
     {
         // Set the default command for a subsystem here.

@@ -11,9 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveJoystick extends Command {
-	double xSpeed = OI.stick1.getX();
-	double zRotation = OI.stick1.getZ();
-	boolean squaredInputs = true;
+    double xSpeed = OI.stick1.getX();
+    double zRotation = OI.stick1.getZ();
+    boolean squaredInputs = true;
+    
     public DriveJoystick() 
     {
         requires(Robot.driveTrain);
