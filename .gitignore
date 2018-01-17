@@ -1,6 +1,10 @@
 # osx
 .DS_Store
 
+.classpath
+build.xml
+.project
+
 .metadata
 bin/
 tmp/
