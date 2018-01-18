@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveJoystick extends Command {
 
+	
 	boolean squaredInputs = true;
     public DriveJoystick() 
     {
