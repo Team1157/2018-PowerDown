@@ -29,8 +29,9 @@ public class DriveJoystick extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	double xSpeed = OI.stick1.getX();
-    	double zRotation = OI.stick1.getZ();
+    	double xSpeed = OI.stickSpin.getX();
+    	double zRotation = OI.stickSpin.getZ();
+    	double liftSpeed = OI.stickNoSpin.getY();
     	Robot.driveTrain.tankDrive.arcadeDrive(xSpeed, zRotation, squaredInputs);
     	SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
     }

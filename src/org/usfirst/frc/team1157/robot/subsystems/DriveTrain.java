@@ -34,7 +34,7 @@ public class DriveTrain extends Subsystem {
     }
     
     
-    public void driveForwardConstant() 
+   /* public void driveForwardConstant() 
     {
     	//displayEncoderVelocity();
     	double constantForward = SmartDashboard.getNumber("Forward Speed", 500);
@@ -64,7 +64,7 @@ public class DriveTrain extends Subsystem {
     	double constantRight = SmartDashboard.getNumber("Turn Speed", 500);
     	rightMotor.set(-1*constantRight);
     	leftMotor.set(constantRight);
-    }
+    }*/
 
 
     public void stop() 
