@@ -2,6 +2,7 @@ package org.usfirst.frc.team1157.robot.subsystems;
 
 import org.usfirst.frc.team1157.robot.RobotMap;
 import org.usfirst.frc.team1157.robot.commands.DriveJoystick;
+import org.usfirst.frc.team1157.robot.commands.LiftDriveJoy;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -17,7 +18,7 @@ public class Lift extends Subsystem {
     public Spark liftMotor = new Spark(RobotMap.lift);
 
     public void initDefaultCommand() {
-    	setDefaultCommand(new DriveJoystick());
+    	setDefaultCommand(new LiftDriveJoy());
     	
     	//liftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
     	//liftMotor;

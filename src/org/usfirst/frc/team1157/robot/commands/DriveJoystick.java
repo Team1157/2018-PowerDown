@@ -31,12 +31,12 @@ public class DriveJoystick extends Command {
     {
     	double ySpeed = OI.stickSpin.getY();
     	double zRotation = OI.stickSpin.getZ();
-    	double liftSpeed = OI.stickNoSpin.getY();
+    	
     	Robot.driveTrain.tankDrive.arcadeDrive(ySpeed, zRotation, squaredInputs);
     	SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
     	SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(1));
-    	//SmartDashboard.putNumber("LiftM-Enc", Robot.lift.liftMotor.getSelectedSensorPosition(2));
-    	Robot.lift.liftMotor.set(liftSpeed);
+    	
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

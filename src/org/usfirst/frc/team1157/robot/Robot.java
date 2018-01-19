@@ -7,11 +7,15 @@
 
 package org.usfirst.frc.team1157.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team1157.robot.commands.AutoForward;
 import org.usfirst.frc.team1157.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1157.robot.subsystems.Lift;
 
@@ -29,15 +33,23 @@ public class Robot extends TimedRobot {
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
-
+	
+	private static final int IMG_WIDTH = 1080;
+    private static final int IMG_HEIGHT = 840;
+    
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	@Override
 	public void robotInit() {
+		
 		m_oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+		
+		m_chooser.addDefault("Auto Drive Foward", new AutoForward(5, .5));
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
@@ -69,6 +81,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		
+		
+		
 		m_autonomousCommand = m_chooser.getSelected();
 
 		/*
