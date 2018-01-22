@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class PSTank extends Command {
 
-	boolean rot = true;
+	boolean arcade = true;
 
 	boolean squaredInputs = true;
 
@@ -26,12 +26,38 @@ public class PSTank extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		if (OI.ps.getRawButtonPressed(12)) {
+			arcade = !arcade;
+		}
+		if (arcade)
+			arcade();
+		else
+			tank();
+
+	}
+
+	private void tank() {
 		double lDamp = 1.0 - OI.ps.getRawAxis(3);
 		double rDamp = 1.0 - OI.ps.getRawAxis(4);
-		double lSpeed = OI.ps.getRawAxis(2) * lDamp;
+
+		double lSpeed = OI.ps.getRawAxis(1) * lDamp;
 		double rSpeed = OI.ps.getRawAxis(5) * rDamp;
 
-		Robot.driveTrain.tankDrive.tankDrive(lSpeed, rSpeed);
+		Robot.driveTrain.tankDrive.tankDrive(lSpeed, rSpeed, true);
+		SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(1));
+
+	}
+
+	private void arcade() {
+		// This isnt done. I needed to leave
+		double lDamp = 1.0 - OI.ps.getRawAxis(3);
+		double rDamp = 1.0 - OI.ps.getRawAxis(4);
+
+		double lSpeed = OI.ps.getRawAxis(1) * lDamp;
+		double rSpeed = OI.ps.getRawAxis(5) * rDamp;
+
+		Robot.driveTrain.tankDrive.arcadeDrive(lSpeed, rSpeed, true);
 		SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
 		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(1));
 
