@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI {
 	public static Joystick stickNoSpin = new Joystick(1);
 	public static Joystick stickSpin = new Joystick(0);
+	public static Joystick ps = new Joystick(0);
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.

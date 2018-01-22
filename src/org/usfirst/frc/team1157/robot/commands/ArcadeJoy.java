@@ -9,13 +9,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class DriveJoystick extends Command {
+public class ArcadeJoy extends Command {
 
 	boolean rot = true;
 
 	boolean squaredInputs = true;
 
-	public DriveJoystick() {
+	public ArcadeJoy() {
 		requires(Robot.driveTrain);
 	}
 

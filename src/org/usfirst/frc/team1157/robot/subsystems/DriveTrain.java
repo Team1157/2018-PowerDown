@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1157.robot.subsystems;
 
 import org.usfirst.frc.team1157.robot.RobotMap;
-import org.usfirst.frc.team1157.robot.commands.DriveJoystick;
+import org.usfirst.frc.team1157.robot.commands.ArcadeJoy;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -22,7 +22,7 @@ public class DriveTrain extends Subsystem {
 	public void initDefaultCommand() {
 
 		// Set the default command for a subsystem here.
-		setDefaultCommand(new DriveJoystick());
+		setDefaultCommand(new ArcadeJoy());
 		// rightSlave.set(ControlMode.Follower, RobotMap.rightMotor);
 		leftSlave.set(ControlMode.Follower, RobotMap.leftMotor);
 
