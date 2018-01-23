@@ -8,11 +8,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-enum Position {
-	LEFT, MIDDLE, RIGHT
-}
 
 public class Autonomous extends Command {
+	
+	public enum Position {
+		LEFT, MIDDLE, RIGHT
+	}
+	
 	Position start;
 
 	// If ours is left then true

@@ -21,6 +21,10 @@ public class RobotMap {
 	public static int leftSlave = 7;
 	// public static int rightSlave = 9;
 	public static int lift = 0;
+	
+	// Top and bottom limit switches for lift
+	public static int limitTop = 0;
+	public static int limitBottom = 1;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
