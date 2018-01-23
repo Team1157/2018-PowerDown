@@ -44,7 +44,7 @@ public class LiftGoto extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (Robot.lift.limitTop.get()) {
+		if (Robot.lift.limitTop.get() || Robot.lift.limitBottom.get()) {
 			return true;
 		}
 		return false;
