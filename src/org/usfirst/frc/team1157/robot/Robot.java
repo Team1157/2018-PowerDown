@@ -8,7 +8,6 @@
 package org.usfirst.frc.team1157.robot;
 
 import org.usfirst.frc.team1157.robot.commands.AutoMove;
-import org.usfirst.frc.team1157.robot.commands.LiftGoto;
 import org.usfirst.frc.team1157.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1157.robot.subsystems.Lift;
 
@@ -44,7 +43,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 
-		//m_oi = new OI();
+		// m_oi = new OI();
 
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(0);
 		camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
@@ -57,8 +56,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 		// Connect auto-move buttons
-		//m_oi.gotoTopButton.whenPressed(new LiftGoto(LiftGoto.Position.TOP));
-		//m_oi.gotoBottomButton.whenPressed(new LiftGoto(LiftGoto.Position.BOTTOM));
+		// m_oi.gotoTopButton.whenPressed(new LiftGoto(LiftGoto.Position.TOP));
+		// m_oi.gotoBottomButton.whenPressed(new LiftGoto(LiftGoto.Position.BOTTOM));
 	}
 
 	/**

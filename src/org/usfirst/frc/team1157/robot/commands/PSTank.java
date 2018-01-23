@@ -42,23 +42,26 @@ public class PSTank extends Command {
 		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(1));
 	}
 
-	private void tank() {
-
-	}
-
-	private void arcade() {
-		// This isnt done. I needed to leave
-		double lDamp = 1.0 - OI.ps.getRawAxis(3);
-		double rDamp = 1.0 - OI.ps.getRawAxis(4);
-
-		double lSpeed = OI.ps.getRawAxis(1) * lDamp;
-		double rSpeed = OI.ps.getRawAxis(5) * rDamp;
-
-		Robot.driveTrain.tankDrive.arcadeDrive(lSpeed, rSpeed, true);
-		SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
-		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(1));
-
-	}
+	/*
+	 * private void tank() {
+	 * 
+	 * }
+	 * 
+	 * private void arcade() { // This isnt done. I needed to leave double
+	 * lDamp =
+	 * 1.0 - OI.ps.getRawAxis(3); double rDamp = 1.0 - OI.ps.getRawAxis(4);
+	 * 
+	 * double lSpeed = OI.ps.getRawAxis(1) * lDamp; double rSpeed =
+	 * OI.ps.getRawAxis(5) * rDamp;
+	 * 
+	 * Robot.driveTrain.tankDrive.arcadeDrive(lSpeed, rSpeed, true);
+	 * SmartDashboard.putNumber("leftM-Enc",
+	 * Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
+	 * SmartDashboard.putNumber("rightM-Enc",
+	 * Robot.driveTrain.rightMotor.getSelectedSensorPosition(1));
+	 * 
+	 * }
+	 */
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {

@@ -4,38 +4,32 @@ import org.usfirst.frc.team1157.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-
 /**
  *
  */
 public class LiftGoto extends Command {
-	
-	public enum Position {
-		TOP,
-		BOTTOM
-	}
-	
-	private double speed;
-	private Position target;
 
-	public LiftGoto(Position tgt) {
+	private double speed;
+	private LiftPosition target;
+
+	public LiftGoto(LiftPosition tgt) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.lift);
-		
+
 		target = tgt;
 		speed = 0.5;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-	}	
+	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		switch (target) {
 		case TOP:
 			Robot.lift.liftMotor.set(speed);
-		
+
 		case BOTTOM:
 			Robot.lift.liftMotor.set(-speed);
 		}
@@ -55,4 +49,8 @@ public class LiftGoto extends Command {
 	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
+}
+
+enum LiftPosition {
+	TOP, BOTTOM
 }
