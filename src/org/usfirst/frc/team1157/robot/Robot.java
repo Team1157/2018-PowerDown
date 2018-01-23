@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team1157.robot;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
+
 import org.usfirst.frc.team1157.robot.commands.AutoMove;
 import org.usfirst.frc.team1157.robot.commands.LiftGoto;
 import org.usfirst.frc.team1157.robot.subsystems.DriveTrain;
@@ -30,7 +30,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Lift lift = new Lift();
-	public static OI m_oi;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -45,7 +44,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 
-		m_oi = new OI();
+		//m_oi = new OI();
 
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(0);
 		camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
@@ -56,10 +55,10 @@ public class Robot extends TimedRobot {
 
 		m_chooser.addDefault("Auto Drive Foward", new AutoMove(5, .5, 0));
 		SmartDashboard.putData("Auto mode", m_chooser);
-		
+
 		// Connect auto-move buttons
-		m_oi.gotoTopButton.whenPressed(new LiftGoto(LiftGoto.Position.TOP));
-		m_oi.gotoBottomButton.whenPressed(new LiftGoto(LiftGoto.Position.BOTTOM));
+		//m_oi.gotoTopButton.whenPressed(new LiftGoto(LiftGoto.Position.TOP));
+		//m_oi.gotoBottomButton.whenPressed(new LiftGoto(LiftGoto.Position.BOTTOM));
 	}
 
 	/**

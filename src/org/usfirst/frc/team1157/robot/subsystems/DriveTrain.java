@@ -28,6 +28,7 @@ public class DriveTrain extends Subsystem {
 		leftSlave.set(ControlMode.Follower, RobotMap.leftMotor);
 
 		leftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		tankDrive.setSafetyEnabled(false);
 
 	}
 
