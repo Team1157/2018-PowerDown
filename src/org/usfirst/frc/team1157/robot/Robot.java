@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team1157.robot;
-
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import org.usfirst.frc.team1157.robot.commands.AutoMove;
 import org.usfirst.frc.team1157.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1157.robot.subsystems.Lift;
