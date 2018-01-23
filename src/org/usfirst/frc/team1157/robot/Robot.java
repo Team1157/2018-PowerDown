@@ -8,6 +8,7 @@
 package org.usfirst.frc.team1157.robot;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import org.usfirst.frc.team1157.robot.commands.AutoMove;
+import org.usfirst.frc.team1157.robot.commands.LiftGoto;
 import org.usfirst.frc.team1157.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1157.robot.subsystems.Lift;
 
@@ -55,6 +56,10 @@ public class Robot extends TimedRobot {
 
 		m_chooser.addDefault("Auto Drive Foward", new AutoMove(5, .5, 0));
 		SmartDashboard.putData("Auto mode", m_chooser);
+		
+		// Connect auto-move buttons
+		m_oi.gotoTopButton.whenPressed(new LiftGoto(LiftGoto.Position.TOP));
+		m_oi.gotoBottomButton.whenPressed(new LiftGoto(LiftGoto.Position.BOTTOM));
 	}
 
 	/**

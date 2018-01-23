@@ -8,6 +8,7 @@
 package org.usfirst.frc.team1157.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -18,6 +19,12 @@ public class OI {
 	public static Joystick stickSpin = (!ps4) ? new Joystick(0) : null;
 	public static Joystick stickNoSpin = (!ps4) ? new Joystick(1) : null;
 	public static Joystick ps = (ps4) ? new Joystick(2) : null;
+	
+	// Auto-move buttons
+	//TODO: Figure out which buttons should be used for auto-move
+	public static JoystickButton gotoTopButton = new JoystickButton(ps, 0 /*Need to change*/);
+	public static JoystickButton gotoBottomButton = new JoystickButton(ps, 1 /*Need to change*/);
+	
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.

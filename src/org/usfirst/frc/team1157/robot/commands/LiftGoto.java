@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1157.robot.commands;
 
-import org.usfirst.frc.team1157.robot.OI;
 import org.usfirst.frc.team1157.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -44,10 +43,7 @@ public class LiftGoto extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (Robot.lift.limitTop.get() || Robot.lift.limitBottom.get()) {
-			return true;
-		}
-		return false;
+		return Robot.lift.limitTop.get() || Robot.lift.limitBottom.get();
 	}
 
 	// Called once after isFinished returns true
