@@ -8,6 +8,12 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class LiftGoto extends Command {
+	
+	public enum LiftPosition {
+		TOP,
+		BOTTOM,
+//		MIDDLE
+	}
 
 	private double speed;
 	private LiftPosition target;
@@ -49,8 +55,4 @@ public class LiftGoto extends Command {
 	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
-}
-
-enum LiftPosition {
-	TOP, BOTTOM
 }
