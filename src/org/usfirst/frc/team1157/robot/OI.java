@@ -22,5 +22,15 @@ public class OI {
 	public static Joystick stickNoSpin = new Joystick(1);
 	public static Joystick ps = new Joystick(2);
 
+	// Lift buttons
+	public JoystickButton liftGotoTop = new JoystickButton(stickSpin, 6);
+	public JoystickButton liftGotoBottom = new JoystickButton(stickSpin, 7);
+//	public JoystickButton liftGotoMiddle = new JoystickButton(stickSpin, 8);
+	
+	public OI() {
+		liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftPosition.TOP));
+		liftGotoBottom.whenPressed(new LiftGoto(LiftGoto.LiftPosition.TOP));
+//		liftGotoMiddle.whenPressed(new LiftGoto(LiftGoto.LiftPosition.MIDDLE));
+	}
 
 }
