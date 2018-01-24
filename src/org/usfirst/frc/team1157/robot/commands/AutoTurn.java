@@ -9,17 +9,17 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoTurn extends Command {
 	boolean finished = false;
-	
+
 	double turnSpeed, angle;
 	double Kp = 0.6;
 	double error;
-	
-	public AutoTurn( double angle) {
+
+	public AutoTurn(double angle) {
 		requires(Robot.driveTrain);
-	
+
 		this.angle = angle;
 		setTimeout(1);
-		
+
 	}
 
 	// Called just before this Command runs the first time
@@ -28,18 +28,17 @@ public class AutoTurn extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		
-		
-		error = (angle - Robot.gyro.getAngle())/90.0;
-    	turnSpeed = Kp * (error);
-		
-		if (Math.abs(Robot.gyro.getAngle() - angle) >= 2.5){
+
+		// TODO: Make sure this works with - angles
+		error = (angle - Robot.gyro.getAngle()) / 90.0;
+		turnSpeed = Kp * (error);
+
+		if (Math.abs(Robot.gyro.getAngle() - angle) >= 2.5) {
 			Robot.driveTrain.tankDrive.arcadeDrive(0, turnSpeed);
-		} 
-		else {
+		} else {
 			finished = true;
 		}
-		
+
 		/*
 		 * Robot.driveTrain.tankDrive.arcadeDrive(0, turnspeed); if
 		 * (Math.abs(Robot.gyro.getAngle() - angle) >= 2.5){

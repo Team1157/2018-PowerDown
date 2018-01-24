@@ -8,19 +8,20 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class AutoMove extends Command {
-	double time, speed, rotation;
+	double distance, speed, rotation;
 
-	public AutoMove(double time, double speed, double rotation) {
+	public AutoMove(double distance, double speed, double rotation) {
 		requires(Robot.driveTrain);
-		this.time = time;
+		this.distance = distance;
 		this.speed = speed;
 		this.rotation = rotation;
-		setTimeout(time);
+		// setTimeout(time);
+		/* TODO: make this work with distance */
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		
+
 	}
 
 	// Called repeatedly when this Command is scheduled to run

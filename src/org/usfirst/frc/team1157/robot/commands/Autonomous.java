@@ -1,68 +1,100 @@
 package org.usfirst.frc.team1157.robot.commands;
 
-import org.usfirst.frc.team1157.robot.Robot;
-
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
 
-public class Autonomous extends Command {
-	
+public class Autonomous extends CommandGroup {
+
 	public enum Position {
 		LEFT, MIDDLE, RIGHT
 	}
-	
+
 	Position start;
 
-	// If ours is left then true
-	Boolean switchNear;
-	Boolean scale;
-	Boolean switchFar;
-	//
+	Position switchNear;
+	Position scale;
+	Position switchFar;
+
+	String gameData;
 
 	int target = 0;
 
-	public Autonomous(Position pos, boolean goSwitch) {
-		requires(Robot.driveTrain);
+	public Autonomous(Position pos) {
 		this.start = pos;
-/*`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````*/
-		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		switchNear = gameData.charAt(0) == 'L';
-		scale = gameData.charAt(0) == 'L';
-		switchFar = gameData.charAt(0) == 'L';
+		if (gameData.charAt(0) == 'L')
+			switchNear = Position.LEFT;
+		else
+			switchNear = Position.RIGHT;
+		
+		if (gameData.charAt(1) == 'L')
+			scale = Position.LEFT;
+		else
+			scale = Position.RIGHT;
+		
+		if (gameData.charAt(2) == 'L')
+			switchFar = Position.LEFT;
+		else
+			switchFar = Position.RIGHT;
 
-		if ((start == Position.LEFT && switchNear) || (start == Position.RIGHT && !switchNear)) {
-			target = 0;
-		}
-		if (start == Position.MIDDLE) {
+		if (start == Position.MIDDLE)
+			middle();
+		else
+			notMiddle();
 
-		}
 	}
 
-	// Called just before this Command runs the first time
-	protected void initialize() {
+	private void notMiddle() {
+		int variable;
+		if (start == Position.LEFT)
+			variable = 1;
+		else
+			variable = -1;
+		
+		if (switchNear == start) {
+			addSequential(new AutoMove(1, 1, 0));
+			addSequential(new AutoTurn(variable * 90));
+			addSequential(new AutoMove(1, 1, 0));
+			addSequential(new AutoDropBox());
+		} else if (scale == start) {
+			addSequential(new AutoMove(10, 1, 0));
+			addSequential(new AutoTurn(variable * 90));
+			addSequential(new AutoMove(1, 1, 0));
+			addSequential(new AutoDropBox());
+		} else
+			addSequential(new AutoMove(1, 1, 0));
+
 	}
 
-	// Called repeatedly when this Command is scheduled to run
-	protected void execute() {
+	private void middle() {
+		double angle;
+		if (switchNear == Position.LEFT) /* TODO: figure me out */
+			angle = 60;
+		else
+			angle = -60;
+		
+		addSequential(new AutoMove(1, 1, 0));
+		addSequential(new AutoTurn(angle));
+		addSequential(new AutoMove(1, 1, 0));
+		addSequential(new AutoTurn(-angle));
+		addSequential(new AutoMove(1, 1, 0));
+		addSequential(new AutoDropBox());
 	}
+	// addSequential(new Command2());
 
-	// Make this return true when this Command no longer needs to run execute()
-	protected boolean isFinished() {
-		return false;
-	}
+	// To run multiple commands at the same time,
+	// use addParallel()
+	// e.g. addParallel(new Command1());
+	// addSequential(new Command2());
+	// Command1 and Command2 will run in parallel.
 
-	// Called once after isFinished returns true
-	protected void end() {
-	}
-
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
-	protected void interrupted() {
-	}
+	// A command group will require all of the subsystems that each member
+	// would require.
+	// e.g. if Command1 requires chassis, and Command2 requires arm,
+	// a CommandGroup containing them would require both the chassis and the
+	// arm.
 }
-
