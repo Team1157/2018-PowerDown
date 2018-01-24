@@ -10,9 +10,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class LiftGoto extends Command {
 
 	private double speed;
-	private LiftPosition target;
+	private Position target;
 
-	public LiftGoto(LiftPosition tgt) {
+	public enum Position {
+		TOP, BOTTOM
+	}
+
+	public LiftGoto(Position tgt) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.lift);
 
@@ -49,8 +53,4 @@ public class LiftGoto extends Command {
 	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
-}
-
-enum LiftPosition {
-	TOP, BOTTOM
 }

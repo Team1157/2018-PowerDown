@@ -7,7 +7,10 @@
 
 package org.usfirst.frc.team1157.robot;
 
+import org.usfirst.frc.team1157.robot.commands.LiftGoto;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -18,5 +21,6 @@ public class OI {
 	public static Joystick stickSpin = new Joystick(0);
 	public static Joystick stickNoSpin = new Joystick(1);
 	public static Joystick ps = new Joystick(2);
+
 
 }

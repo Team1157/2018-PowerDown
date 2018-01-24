@@ -8,15 +8,18 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class AutoTurn extends Command {
-
-	double time, turnspeed, angle;
-
-	public AutoTurn(double time, double turnspeed, double angle) {
+	boolean finished = false;
+	
+	double turnSpeed, angle;
+	double Kp = 0.6;
+	double error;
+	
+	public AutoTurn( double angle) {
 		requires(Robot.driveTrain);
-		this.time = time;
-		this.turnspeed = turnspeed;
+	
 		this.angle = angle;
-		setTimeout(time);
+		setTimeout(1);
+		
 	}
 
 	// Called just before this Command runs the first time
@@ -25,6 +28,18 @@ public class AutoTurn extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		
+		
+		error = (angle - Robot.gyro.getAngle())/90.0;
+    	turnSpeed = Kp * (error);
+		
+		if (Math.abs(Robot.gyro.getAngle() - angle) >= 2.5){
+			Robot.driveTrain.tankDrive.arcadeDrive(0, turnSpeed);
+		} 
+		else {
+			finished = true;
+		}
+		
 		/*
 		 * Robot.driveTrain.tankDrive.arcadeDrive(0, turnspeed); if
 		 * (Math.abs(Robot.gyro.getAngle() - angle) >= 2.5){
@@ -34,15 +49,17 @@ public class AutoTurn extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		return finished || isTimedOut();
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
+		Robot.driveTrain.stop();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		end();
 	}
 }
