@@ -10,15 +10,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class LiftGoto extends Command {
 
 	public enum LiftPosition {
-		TOP, BOTTOM, MIDDLE
+		TOP,
+		BOTTOM,
+//		MIDDLE
 	}
 
 	private double speed;
 	private LiftPosition target;
-
-	public enum Position {
-		TOP, BOTTOM
-	}
+	private boolean finished = false;
 
 	public LiftGoto(LiftPosition tgt) {
 		// Use requires() here to declare subsystem dependencies
@@ -40,12 +39,15 @@ public class LiftGoto extends Command {
 
 		case BOTTOM:
 			Robot.lift.liftMotor.set(-speed);
+		
+		default:
+			finished = true;
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return Robot.lift.limitTop.get() || Robot.lift.limitBottom.get();
+		return Robot.lift.limitTop.get() || Robot.lift.limitBottom.get() || finished;
 	}
 
 	// Called once after isFinished returns true
