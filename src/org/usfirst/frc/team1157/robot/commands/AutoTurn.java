@@ -47,6 +47,7 @@ public class AutoTurn extends Command {
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
+	// notes notes notes notes notes notes notes notes notes notes notes notes notesnotes notes notesnotes
 	protected boolean isFinished() {
 		return finished || isTimedOut();
 	}

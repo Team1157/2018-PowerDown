@@ -18,7 +18,7 @@ public class AutoMove extends Command {
 	double distanceTraveledL = 0;
 	double distanceTraveledR = 0;
 	boolean Finished = false;
-	
+	// julien = scrub
 	public AutoMove(double distance, double speed, double rotation) {
 		requires(Robot.driveTrain);
 		this.distance = distance;
@@ -40,6 +40,7 @@ public class AutoMove extends Command {
 	}
 
 	// Called repeatedly when this Command is scheduled to run
+	// Cole = god
 	protected void execute() {
 		Robot.driveTrain.tankDrive.arcadeDrive(speed, rotation);
 		encoderPosR = Robot.driveTrain.rightMotor.getSelectedSensorPosition(0);
@@ -49,7 +50,7 @@ public class AutoMove extends Command {
 		if(distanceTraveledR >= distance || distanceTraveledL >= distance) {
 			Finished = true;
 		}
-			
+			// bill da dest
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -68,6 +69,6 @@ public class AutoMove extends Command {
 	protected void interrupted() {
 		end();
 	
-	
+	//programming suk
 	}
 }
