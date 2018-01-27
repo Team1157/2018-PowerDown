@@ -42,7 +42,7 @@ public class PSTank extends Command {
 
 		Robot.driveTrain.tankDrive.tankDrive(lSpeed, rSpeed, true);
 		SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
-		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(1));
+		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(0));
 	}
 
 	/*
