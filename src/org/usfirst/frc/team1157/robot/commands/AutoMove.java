@@ -43,7 +43,7 @@ public class AutoMove extends Command {
 	protected void execute() {
 		Robot.driveTrain.tankDrive.arcadeDrive(speed, rotation);
 		encoderPosR = Robot.driveTrain.rightMotor.getSelectedSensorPosition(0);
-		encoderPosL = (double) (Robot.driveTrain.leftMotor.getSelectedSensorPosition(0);)
+		encoderPosL = (double) Robot.driveTrain.leftMotor.getSelectedSensorPosition(0);
 		distanceTraveledL = encoderClicksPerIn/encoderPosL;
 		distanceTraveledR = encoderClicksPerIn/encoderPosR;
 		if(distanceTraveledR >= distance || distanceTraveledL >= distance) {
