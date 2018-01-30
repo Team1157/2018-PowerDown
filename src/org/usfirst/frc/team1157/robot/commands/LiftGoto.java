@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class LiftGoto extends Command {
-
+//TODO: get proper encoder values
 	public enum LiftDestination {
 		TOP(100),
 		BOTTOM(0),
