@@ -25,7 +25,7 @@ public class AutoMove extends Command {
 		this.speed = speed;
 		this.rotation = rotation;
 		// setTimeout(time);
-		/* TODO: make this work with distance */
+		
 	}
 
 	// Called just before this Command runs the first time
@@ -44,9 +44,9 @@ public class AutoMove extends Command {
 	protected void execute() {
 		Robot.driveTrain.tankDrive.arcadeDrive(speed, rotation);
 		encoderPosR = Robot.driveTrain.rightMotor.getSelectedSensorPosition(0);
-		encoderPosL = (double) (Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
-		distanceTraveledL = encoderClicksPerIn/encoderPosL;
-		distanceTraveledR = encoderClicksPerIn/encoderPosR;
+		encoderPosL = Robot.driveTrain.leftMotor.getSelectedSensorPosition(0);
+		distanceTraveledL = Math.abs(encoderClicksPerIn/encoderPosL);
+		distanceTraveledR = Math.abs(encoderClicksPerIn/encoderPosR);
 		if(distanceTraveledR >= distance || distanceTraveledL >= distance) {
 			Finished = true;
 		}

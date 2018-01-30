@@ -19,8 +19,10 @@ public class RobotMap {
 	public static int leftMotor = 6;
 	public static int rightMotor = 8;
 	public static int leftSlave = 7;
-	// public static int rightSlave = 9;
+	public static int rightSlave = 9;
 	public static int lift = 0;
+	public static int wheelR = 1;
+	public static int wheelL = 2;
 	
 	// Top and bottom limit switches for lift
 	public static int limitTop = 0;

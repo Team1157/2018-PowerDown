@@ -29,8 +29,8 @@ public class AutoTurn extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
-		// TODO: Make sure this works with - angles
-		error = (angle - Robot.gyro.getAngle()) / 90.0;
+		// 
+		error = Math.abs(angle) - Robot.gyro.getAngle() / 90.0;
 		turnSpeed = Kp * (error);
 
 		if (Math.abs(Robot.gyro.getAngle() - angle) >= 2.5) {

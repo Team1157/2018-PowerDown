@@ -14,21 +14,24 @@ public class DriveTrain extends Subsystem {
 
 	public WPI_TalonSRX rightMotor = new WPI_TalonSRX(RobotMap.rightMotor);
 	public WPI_TalonSRX leftMotor = new WPI_TalonSRX(RobotMap.leftMotor);
-	// public WPI_TalonSRX rightSlave = new WPI_TalonSRX(RobotMap.rightSlave);
+	public WPI_TalonSRX rightSlave = new WPI_TalonSRX(RobotMap.rightSlave);
 	public WPI_TalonSRX leftSlave = new WPI_TalonSRX(RobotMap.leftSlave);
 
 	public DifferentialDrive tankDrive = new DifferentialDrive(leftMotor, rightMotor);
 
+	public DriveTrain() {
+		rightSlave.set(ControlMode.Follower, RobotMap.rightMotor);
+		leftSlave.set(ControlMode.Follower, RobotMap.leftMotor);
+
+		leftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		tankDrive.setSafetyEnabled(false);
+
+	}
 	public void initDefaultCommand() {
 		
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new ArcadeJoy());
 		setDefaultCommand(new PSTank());
-		// rightSlave.set(ControlMode.Follower, RobotMap.rightMotor);
-		leftSlave.set(ControlMode.Follower, RobotMap.leftMotor);
-
-		leftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
-		tankDrive.setSafetyEnabled(false);
 
 	}
 
