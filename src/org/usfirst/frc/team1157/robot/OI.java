@@ -28,8 +28,8 @@ public class OI {
 //	public JoystickButton liftGotoMiddle = new JoystickButton(stickSpin, 8);
 	
 	public OI() {
-		liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftPosition.TOP));
-		liftGotoBottom.whenPressed(new LiftGoto(LiftGoto.LiftPosition.TOP));
+		liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
+		liftGotoBottom.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
 //		liftGotoMiddle.whenPressed(new LiftGoto(LiftGoto.LiftPosition.MIDDLE));
 	}
 

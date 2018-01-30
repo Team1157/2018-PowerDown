@@ -9,45 +9,58 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LiftGoto extends Command {
 
-	public enum LiftPosition {
-		TOP,
-		BOTTOM,
-//		MIDDLE
+	public enum LiftDestination {
+		TOP(100),
+		BOTTOM(0),
+//		MIDDLE(50)
+		;
+		public final int position;
+		LiftDestination(int pos) {
+			position = pos;
+		}
 	}
 
-	private double speed;
-	private LiftPosition target;
-	private boolean finished = false;
+	private LiftDestination target;
+	private int startingPosition;
+	private boolean direction; // true = up
 
-	public LiftGoto(LiftPosition tgt) {
+	public LiftGoto(LiftDestination tgt) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.lift);
 
 		target = tgt;
-		speed = 0.5;
+//		speed = 0.5;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		startingPosition = Robot.lift.liftMotor.getSelectedSensorPosition(0);
+		direction = startingPosition < target.position;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		switch (target) {
-		case TOP:
-			Robot.lift.liftMotor.set(speed);
-
-		case BOTTOM:
-			Robot.lift.liftMotor.set(-speed);
-		
-		default:
-			finished = true;
+		if (direction) {
+			Robot.lift.liftMotor.set(0.5);
+		}
+		else {
+			Robot.lift.liftMotor.set(-0.5);
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return Robot.lift.limitTop.get() || Robot.lift.limitBottom.get() || finished;
+		// Exit if limit switches are pressed
+		if (Robot.lift.limitTop.get() || Robot.lift.limitBottom.get()) {
+			return true;
+		}
+		// Exit if goals are reached
+		if (direction) {
+			return Robot.lift.liftMotor.getSelectedSensorPosition(0) >= target.position;
+		}
+		else {
+			return Robot.lift.liftMotor.getSelectedSensorPosition(0) <= target.position;
+		}
 	}
 
 	// Called once after isFinished returns true
