@@ -1,18 +1,19 @@
 package org.usfirst.frc.team1157.robot.commands;
 
+import org.usfirst.frc.team1157.robot.OI;
 import org.usfirst.frc.team1157.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *JULIEN MADE BAD CODE FIX IT WHEN YOU GET THE CHANCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  */
-public class GrabBox extends Command {
-
-    public GrabBox() {
-    	requires(Robot.manipulator);
+public class ManBox extends Command {
+	double speed;
+    public ManBox(double speed) {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.manipulator);
+        this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +22,7 @@ public class GrabBox extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.manipulator.manipulateBlock(-1);
+    	Robot.manipulator.manipulateBlock(OI.stickSpin.getX());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,6 +32,7 @@ public class GrabBox extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.manipulator.manipulateBlock(0);
     }
 
     // Called when another command which requires one or more of the same

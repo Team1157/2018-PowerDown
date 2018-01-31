@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class LaunchBox extends Command {
-
+//TODO:add time/end conditon
     public LaunchBox() {
     	requires(Robot.manipulator);
         // Use requires() here to declare subsystem dependencies

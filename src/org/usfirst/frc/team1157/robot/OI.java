@@ -8,6 +8,7 @@
 package org.usfirst.frc.team1157.robot;
 
 import org.usfirst.frc.team1157.robot.commands.LiftGoto;
+import org.usfirst.frc.team1157.robot.commands.ManBox;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -26,11 +27,15 @@ public class OI {
 	public JoystickButton liftGotoTop = new JoystickButton(stickSpin, 6);
 	public JoystickButton liftGotoBottom = new JoystickButton(stickSpin, 7);
 	public JoystickButton liftGotoMiddle = new JoystickButton(stickSpin, 8);
+	public JoystickButton boxIn = new JoystickButton(stickSpin, 10);
+	public JoystickButton boxOut = new JoystickButton(stickSpin, 9);
 	
 	public OI() {
 		liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
 		liftGotoBottom.whenPressed(new LiftGoto(LiftGoto.LiftDestination.BOTTOM));
 		liftGotoMiddle.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
+		boxIn.whenPressed(new ManBox(1));
+		boxOut.whenPressed(new ManBox(-1));
 	}
 
 }

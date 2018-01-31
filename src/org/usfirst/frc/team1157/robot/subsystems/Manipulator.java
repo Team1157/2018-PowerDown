@@ -2,6 +2,7 @@ package org.usfirst.frc.team1157.robot.subsystems;
 
 import org.usfirst.frc.team1157.robot.Robot;
 import org.usfirst.frc.team1157.robot.RobotMap;
+import org.usfirst.frc.team1157.robot.commands.ManBox;
 import org.xml.sax.SAXNotSupportedException;
 
 import edu.wpi.first.wpilibj.Spark;
@@ -25,12 +26,12 @@ public class Manipulator extends Subsystem {
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new ManBox(1));
     }
     
    public void manipulateBlock(double speed) {
 	  wheelL.set(speed);
-	   wheelR.set(speed);
+	  wheelR.set(speed);
    }
    
 }
