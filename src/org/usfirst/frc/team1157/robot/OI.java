@@ -36,8 +36,8 @@ public class OI {
 		liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
 		liftGotoBottom.whenPressed(new LiftGoto(LiftGoto.LiftDestination.BOTTOM));
 		liftGotoMiddle.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
-		boxIn.whenPressed(new ManBox(1));
-		boxOut.whenPressed(new ManBox(-1));
+		boxIn.whileHeld(new ManBox(1));
+		boxOut.whileHeld(new ManBox(-1));
 	}
 
 }

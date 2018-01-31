@@ -25,7 +25,7 @@ public class Manipulator extends Subsystem {
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new ManBox(1));
+//        setDefaultCommand(new ManBox(1));
     }
     
    public void manipulateBlock(double speed) {
