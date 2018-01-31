@@ -10,6 +10,10 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+/**
+ * Main drive chain for robot
+ * Default command: PSTank
+ */
 public class DriveTrain extends Subsystem {
 
 	public WPI_TalonSRX rightMotor = new WPI_TalonSRX(RobotMap.rightMotor);

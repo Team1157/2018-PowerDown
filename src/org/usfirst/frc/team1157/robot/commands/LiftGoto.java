@@ -5,7 +5,7 @@ import org.usfirst.frc.team1157.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Goto a pre-programmed position on the lift
  */
 public class LiftGoto extends Command {
 //TODO: get proper encoder values
@@ -29,7 +29,10 @@ public class LiftGoto extends Command {
 		requires(Robot.lift);
 
 		target = tgt;
-//		speed = 0.5;
+		
+		// Reset limit counters
+		Robot.lift.limitTop.reset();
+		Robot.lift.limitBottom.reset();
 	}
 
 	// Called just before this Command runs the first time

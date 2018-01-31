@@ -8,6 +8,7 @@
 package org.usfirst.frc.team1157.robot;
 
 import org.usfirst.frc.team1157.robot.commands.AutoMove;
+import org.usfirst.frc.team1157.robot.subsystems.Climber;
 import org.usfirst.frc.team1157.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1157.robot.subsystems.Lift;
 import org.usfirst.frc.team1157.robot.subsystems.Manipulator;
@@ -32,6 +33,7 @@ public class Robot extends TimedRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Manipulator manipulator = new Manipulator();
 	public static final Lift lift = new Lift();
+	public static final Climber climber = new Climber();
 	public static final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	public static OI m_oi;
 

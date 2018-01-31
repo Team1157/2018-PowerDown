@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1157.robot.subsystems;
 
-import org.usfirst.frc.team1157.robot.Robot;
 import org.usfirst.frc.team1157.robot.RobotMap;
 import org.usfirst.frc.team1157.robot.commands.ManBox;
 import org.xml.sax.SAXNotSupportedException;
@@ -9,9 +8,9 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Box grabber
+ * Default command: none
  */
-
 public class Manipulator extends Subsystem {
 	
 	public Spark wheelR = new Spark(RobotMap.wheelR);
