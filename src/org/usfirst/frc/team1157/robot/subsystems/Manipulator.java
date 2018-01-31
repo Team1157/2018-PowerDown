@@ -1,8 +1,6 @@
 package org.usfirst.frc.team1157.robot.subsystems;
 
-import org.usfirst.frc.team1157.robot.Robot;
 import org.usfirst.frc.team1157.robot.RobotMap;
-import org.xml.sax.SAXNotSupportedException;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
