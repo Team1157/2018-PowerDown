@@ -6,7 +6,7 @@ import org.usfirst.frc.team1157.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *JULIEN MADE BAD CODE FIX IT WHEN YOU GET THE CHANCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ * Manual control of manipulator
  */
 public class ManBox extends Command {
 	double speed;
@@ -22,7 +22,7 @@ public class ManBox extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.manipulator.manipulateBlock(OI.stickSpin.getX());
+    	Robot.manipulator.manipulateBlock(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -27,6 +27,8 @@ public class OI {
 	public JoystickButton liftGotoTop = new JoystickButton(stickSpin, 6);
 	public JoystickButton liftGotoBottom = new JoystickButton(stickSpin, 7);
 	public JoystickButton liftGotoMiddle = new JoystickButton(stickSpin, 8);
+	
+	// Manipulator buttons
 	public JoystickButton boxIn = new JoystickButton(stickSpin, 10);
 	public JoystickButton boxOut = new JoystickButton(stickSpin, 9);
 	
