@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Box grabber
+ * Default command: none
  */
-
 public class Manipulator extends Subsystem {
 	
 	public Spark wheelR = new Spark(RobotMap.wheelR);

@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Lifter mechanism
+ * Default command: LiftDriveJoy
  */
 public class Lift extends Subsystem {
 

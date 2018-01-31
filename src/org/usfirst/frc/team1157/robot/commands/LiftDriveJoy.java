@@ -6,7 +6,7 @@ import org.usfirst.frc.team1157.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Drive the robot with a joystick
  */
 public class LiftDriveJoy extends Command {
 

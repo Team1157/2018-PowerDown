@@ -5,7 +5,7 @@ import org.usfirst.frc.team1157.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Goto a pre-programmed position on the lift
  */
 public class LiftGoto extends Command {
 //TODO: get proper encoder values

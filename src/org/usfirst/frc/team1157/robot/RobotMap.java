@@ -23,11 +23,11 @@ public class RobotMap {
 	public static int leftSlave = 7;
 	public static int rightSlave = 9;
 	public static int lift = 0;
+	
+	// PWM IO
+	public static int winchMotor = 0;
 	public static int wheelR = 1;
 	public static int wheelL = 2;
-	
-	// Relays
-	public static int winchMotor = 0;
 	
 	// DIO pins
 	public static int limitTop = 0;
