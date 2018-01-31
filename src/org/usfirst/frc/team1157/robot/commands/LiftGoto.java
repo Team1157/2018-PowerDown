@@ -29,7 +29,10 @@ public class LiftGoto extends Command {
 		requires(Robot.lift);
 
 		target = tgt;
-//		speed = 0.5;
+		
+		// Reset limit counters
+		Robot.lift.limitTop.reset();
+		Robot.lift.limitBottom.reset();
 	}
 
 	// Called just before this Command runs the first time
