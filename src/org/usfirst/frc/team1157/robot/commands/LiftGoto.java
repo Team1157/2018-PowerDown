@@ -12,8 +12,8 @@ public class LiftGoto extends Command {
 	public enum LiftDestination {
 		TOP(100),
 		BOTTOM(0),
-//		MIDDLE(50)
-		;
+		MIDDLE(50);
+		
 		public final int position;
 		LiftDestination(int pos) {
 			position = pos;
@@ -51,7 +51,7 @@ public class LiftGoto extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		// Exit if limit switches are pressed
-		if (Robot.lift.limitTop.get() || Robot.lift.limitBottom.get()) {
+		if (Robot.lift.limitTop.get() > 0 || Robot.lift.limitBottom.get() > 0) {
 			return true;
 		}
 		// Exit if goals are reached
