@@ -30,6 +30,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
+	
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Manipulator manipulator = new Manipulator();
 	public static final Lift lift = new Lift();
@@ -144,5 +145,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		
 	}
 }

@@ -5,7 +5,7 @@ import org.usfirst.frc.team1157.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Launches a box.
  */
 public class LaunchBox extends Command {
 //TODO:add time/end conditon
@@ -21,7 +21,7 @@ public class LaunchBox extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.manipulator.manipulateBlock(-1);
+    	Robot.manipulator.manipulateBox(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

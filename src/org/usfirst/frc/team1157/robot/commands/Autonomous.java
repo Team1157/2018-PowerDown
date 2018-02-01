@@ -4,9 +4,8 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * Full control of robot during autonomous
  */
-
 public class Autonomous extends CommandGroup {
 
 	public enum Position {
@@ -14,15 +13,15 @@ public class Autonomous extends CommandGroup {
 	}
 
 	Position start;
-
 	Position switchNear;
 	Position scale;
 	Position switchFar;
-
+	
 	String gameData;
-
+	
 	int target = 0;
 
+	
 	public Autonomous(Position pos) {
 		this.start = pos;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();

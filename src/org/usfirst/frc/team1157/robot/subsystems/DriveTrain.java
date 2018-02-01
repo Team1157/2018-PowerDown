@@ -23,6 +23,7 @@ public class DriveTrain extends Subsystem {
 
 	public DifferentialDrive tankDrive = new DifferentialDrive(leftMotor, rightMotor);
 
+	
 	public DriveTrain() {
 		rightSlave.set(ControlMode.Follower, RobotMap.rightMotor);
 		leftSlave.set(ControlMode.Follower, RobotMap.leftMotor);
@@ -31,12 +32,9 @@ public class DriveTrain extends Subsystem {
 		tankDrive.setSafetyEnabled(false);
 
 	}
+	
 	public void initDefaultCommand() {
-		
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new ArcadeJoy());
 		setDefaultCommand(new PSTank());
-
 	}
 
 	public void stop() {

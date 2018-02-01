@@ -3,7 +3,7 @@ package org.usfirst.frc.team1157.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * 
+ * Automatically drop the box on the scale.
  */
 public class AutoDropBox extends CommandGroup {
 

@@ -7,12 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
+ * Drive the robot in arcade mode
  */
 public class ArcadeJoy extends Command {
 
 	boolean rot = true;
-
 	boolean squaredInputs = true;
 
 	public ArcadeJoy() {
@@ -47,10 +46,12 @@ public class ArcadeJoy extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		
 	}
 }

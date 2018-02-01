@@ -18,6 +18,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	
+	// Joysticks
 	// private static boolean ps4 = true;
 	public static Joystick stickSpin = new Joystick(0);
 	public static Joystick stickNoSpin = new Joystick(1);
@@ -32,6 +34,7 @@ public class OI {
 	public JoystickButton boxIn = new JoystickButton(stickSpin, 10);
 	public JoystickButton boxOut = new JoystickButton(stickSpin, 9);
 	
+	// Initialize buttons
 	public OI() {
 		liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
 		liftGotoBottom.whenPressed(new LiftGoto(LiftGoto.LiftDestination.BOTTOM));

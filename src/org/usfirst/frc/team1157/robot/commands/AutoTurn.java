@@ -5,11 +5,11 @@ import org.usfirst.frc.team1157.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Turning of robot during autonomous
  */
 public class AutoTurn extends Command {
+	
 	boolean finished = false;
-
 	double turnSpeed, angle;
 	double Kp = 0.6;
 	double error;
@@ -24,6 +24,7 @@ public class AutoTurn extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		
 	}
 
 	// Called repeatedly when this Command is scheduled to run

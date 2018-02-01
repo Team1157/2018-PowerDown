@@ -26,8 +26,8 @@ public class RobotMap {
 	
 	// PWM IO
 	public static int winchMotor = 0;
-	public static int wheelR = 1;
-	public static int wheelL = 2;
+	public static int manRightWheel = 1;
+	public static int manLeftWheel = 2;
 	
 	// DIO pins
 	public static int limitTop = 0;

@@ -8,8 +8,13 @@ import edu.wpi.first.wpilibj.command.Command;
  * Goto a pre-programmed position on the lift
  */
 public class LiftGoto extends Command {
-//TODO: get proper encoder values
+	
+	/**
+	 * The list of pre-programmed positions for the lift
+	 * NAME(ENCODER_POS),
+	 */
 	public enum LiftDestination {
+		//TODO: get proper encoder values
 		TOP(100),
 		BOTTOM(0),
 		MIDDLE(50);
@@ -25,7 +30,6 @@ public class LiftGoto extends Command {
 	private boolean direction; // true = up
 
 	public LiftGoto(LiftDestination tgt) {
-		// Use requires() here to declare subsystem dependencies
 		requires(Robot.lift);
 
 		target = tgt;
@@ -74,5 +78,6 @@ public class LiftGoto extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		
 	}
 }

@@ -6,17 +6,22 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
+ * Movement during autonomous mode.
  */
 public class AutoMove extends Command {
+	
 	double distance, speed, rotation;
 	double encoderClicksPerIn = 56.81831468380663;
+	
 	double encoderPosR = 0;
 	double encoderPosL = 0;
+	
 	double distanceTraveledL = 0;
 	double distanceTraveledR = 0;
+	
 	boolean Finished = false;
-	// julien = scrub
+
+	
 	public AutoMove(double distance, double speed, double rotation) {
 		requires(Robot.driveTrain);
 		this.distance = distance;
@@ -50,7 +55,6 @@ public class AutoMove extends Command {
 		if(distanceTraveledR >= distance || distanceTraveledL >= distance) {
 			Finished = true;
 		}
-			// bill da dest
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -68,7 +72,5 @@ public class AutoMove extends Command {
 	// subsystems is scheduled to run
 	protected void interrupted() {
 		end();
-	
-	//programming suk
 	}
 }

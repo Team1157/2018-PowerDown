@@ -5,11 +5,13 @@ import org.usfirst.frc.team1157.robot.commands.WinchDrive;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
 /**
  * The winch/climber mechanism for climbing up the scale at the end
  * Default command: WinchDrive
  */
 public class Climber extends Subsystem {
+	
 	public Spark winchMotor = new Spark(RobotMap.winchMotor);
 	
 	public Climber() {
