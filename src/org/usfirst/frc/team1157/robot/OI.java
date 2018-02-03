@@ -31,8 +31,9 @@ public class OI {
 	public JoystickButton liftGotoMiddle = new JoystickButton(stickSpin, 8);
 	
 	// Manipulator buttons
-	public JoystickButton boxIn = new JoystickButton(stickSpin, 10);
-	public JoystickButton boxOut = new JoystickButton(stickSpin, 9);
+	public JoystickButton boxIn = new JoystickButton(stickSpin, 1);
+	public JoystickButton boxOut = new JoystickButton(stickSpin, 2);
+	public JoystickButton box2 = new JoystickButton(stickSpin, 2);
 	
 	// Initialize buttons
 	public OI() {
