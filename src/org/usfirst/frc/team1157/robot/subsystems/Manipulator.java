@@ -1,6 +1,8 @@
 package org.usfirst.frc.team1157.robot.subsystems;
 
 import org.usfirst.frc.team1157.robot.RobotMap;
+import org.usfirst.frc.team1157.robot.commands.ManBox;
+import org.usfirst.frc.team1157.robot.commands.joyBox;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,7 +21,7 @@ public class Manipulator extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-        // setDefaultCommand(new ManBox(1));
+        setDefaultCommand(new joyBox());
     }
     
     /**
@@ -31,5 +33,20 @@ public class Manipulator extends Subsystem {
 	  rightWheel.set(speed);
    }
    
+    public void manipulateBox(double speedL, double speedR) {
+	  leftWheel.set(speedL);
+	  rightWheel.set(speedR);
+    }
+    
+    public void turnBox(double speed) {
+	  leftWheel.set(-speed);
+	  rightWheel.set(speed);
+   }
+   
+    
+    public void stop() {
+	  leftWheel.set(0);
+	  rightWheel.set(0);
+    }
 }
 

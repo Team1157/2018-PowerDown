@@ -18,11 +18,11 @@ public class RobotMap {
 	// following variables to use with your drivetrain subsystem.
 	
 	// CAN bus items
-	public static int leftMotor = 6;
-	public static int rightMotor = 8;
-	public static int leftSlave = 7;
-	public static int rightSlave = 9;
-	public static int lift = 0;
+	public static int leftMotor = 8;
+	public static int rightMotor = 5;
+	public static int leftSlave = 9;
+	public static int rightSlave = 6;
+	public static int lift = 7;
 	
 	// PWM IO
 	public static int winchMotor = 0;

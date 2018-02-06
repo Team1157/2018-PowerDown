@@ -5,25 +5,24 @@ import org.usfirst.frc.team1157.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Manual control of manipulator
+ *
  */
-public class ManBox extends Command {
-	
-	double speed;
-	
-    public ManBox(double speed) {
-        requires(Robot.manipulator);
+public class turnBox extends Command {
+double speed;
+    public turnBox(double speed) {
+	requires(Robot.manipulator);
         this.speed = speed;
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.manipulator.manipulateBox(speed);
+	Robot.manipulator.turnBox(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
