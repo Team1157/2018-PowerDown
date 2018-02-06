@@ -1,8 +1,7 @@
 package org.usfirst.frc.team1157.robot.subsystems;
 
 import org.usfirst.frc.team1157.robot.RobotMap;
-import org.usfirst.frc.team1157.robot.commands.ManBox;
-import org.usfirst.frc.team1157.robot.commands.joyBox;
+import org.usfirst.frc.team1157.robot.commands.JoyBox;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -21,7 +20,7 @@ public class Manipulator extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-        setDefaultCommand(new joyBox());
+        setDefaultCommand(new JoyBox());
     }
     
     /**

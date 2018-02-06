@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1157.robot.commands;
 
+import org.usfirst.frc.team1157.robot.OI;
 import org.usfirst.frc.team1157.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,13 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class turnBox extends Command {
-double speed;
-    public turnBox(double speed) {
-	requires(Robot.manipulator);
-        this.speed = speed;
+public class JoyBox extends Command {
+
+    public JoyBox() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.manipulator);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +21,7 @@ double speed;
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-	Robot.manipulator.turnBox(speed);
+	Robot.manipulator.manipulateBox(OI.stickSpin.getY()-(OI.stickSpin.getTwist()*0.5),OI.stickSpin.getY()+(OI.stickSpin.getTwist()*0.5));
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,12 +31,10 @@ double speed;
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.manipulator.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

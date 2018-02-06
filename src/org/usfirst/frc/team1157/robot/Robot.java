@@ -145,6 +145,10 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		
+		// Send encoder positions
+		SmartDashboard.putNumber("Lift Position", lift.liftMotor.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("Left Motor Position", driveTrain.leftMotor.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("Right Motor Position", driveTrain.rightMotor.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("Gyro", gyro.getAngle());
 	}
 }

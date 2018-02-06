@@ -9,7 +9,7 @@ package org.usfirst.frc.team1157.robot;
 
 import org.usfirst.frc.team1157.robot.commands.LiftGoto;
 import org.usfirst.frc.team1157.robot.commands.ManBox;
-import org.usfirst.frc.team1157.robot.commands.turnBox;
+import org.usfirst.frc.team1157.robot.commands.TurnBox;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -44,8 +44,8 @@ public class OI {
 		liftGotoMiddle.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
 		boxIn.whileHeld(new ManBox(1));
 		boxOut.whileHeld(new ManBox(-1));
-		boxSpin.whileActive(new turnBox(1));
-		boxSpin2.whileActive(new turnBox(-1));
+		boxSpin.whileActive(new TurnBox(1));
+		boxSpin2.whileActive(new TurnBox(-1));
 	}
 
 }
