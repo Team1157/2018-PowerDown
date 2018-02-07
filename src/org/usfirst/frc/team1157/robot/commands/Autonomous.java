@@ -55,17 +55,17 @@ public class Autonomous extends CommandGroup {
 			variable = -1;
 		
 		if (switchNear == start) {
-			addSequential(new AutoMove(1, 1, 0));
+			addSequential(new AutoMove(1, 1));
 			addSequential(new AutoTurn(variable * 90));
-			addSequential(new AutoMove(1, 1, 0));
+			addSequential(new AutoMove(1, 1));
 			addSequential(new AutoDropBox());
 		} else if (scale == start) {
-			addSequential(new AutoMove(10, 1, 0));
+			addSequential(new AutoMove(10, 1));
 			addSequential(new AutoTurn(variable * 90));
-			addSequential(new AutoMove(1, 1, 0));
+			addSequential(new AutoMove(1, 1));
 			addSequential(new AutoDropBox());
 		} else
-			addSequential(new AutoMove(1, 1, 0));
+			addSequential(new AutoMove(1, 1));
 
 	}
 
@@ -76,11 +76,11 @@ public class Autonomous extends CommandGroup {
 		else
 			angle = -60;
 		
-		addSequential(new AutoMove(1, 1, 0));
+		addSequential(new AutoMove(1, 1));
 		addSequential(new AutoTurn(angle));
-		addSequential(new AutoMove(1, 1, 0));
+		addSequential(new AutoMove(1, 1));
 		addSequential(new AutoTurn(-angle));
-		addSequential(new AutoMove(1, 1, 0));
+		addSequential(new AutoMove(1, 1));
 		addSequential(new AutoDropBox());
 	}
 	// addSequential(new Command2());

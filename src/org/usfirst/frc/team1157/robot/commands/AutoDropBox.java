@@ -10,9 +10,9 @@ public class AutoDropBox extends CommandGroup {
 	public AutoDropBox() {
 		
 		addSequential(new LiftGoto(LiftGoto.LiftDestination.TOP));
-		addSequential(new AutoMove(6, .3, 0));
+		addSequential(new AutoMove(6, .3));
 		addSequential(new LaunchBox());
-		addSequential(new AutoMove(6, -.3, 0));
+		addSequential(new AutoMove(6, -.3));
 		addSequential(new LiftGoto(LiftGoto.LiftDestination.BOTTOM));
 		
 		// Add Commands here:

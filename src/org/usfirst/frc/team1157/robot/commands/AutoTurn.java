@@ -11,7 +11,7 @@ public class AutoTurn extends Command {
 	
 	boolean finished = false;
 	double turnSpeed, angle;
-	double Kp = 0.6;
+	double Kp = 0.3;
 	double error;
 
 	public AutoTurn(double angle) {

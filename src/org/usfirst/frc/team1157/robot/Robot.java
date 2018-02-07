@@ -62,7 +62,7 @@ public class Robot extends TimedRobot {
 		// UsbCamera camera2 = CameraServer.getInstance().
 		SmartDashboard.putNumber("auto distance", 5);
 		SmartDashboard.putNumber("auto turn angle", 90);
-		m_chooser.addDefault("Auto Drive Foward", new AutoMove(SmartDashboard.getNumber("auto distance", 5), .5, 0));
+		m_chooser.addDefault("Auto Drive Foward", new AutoMove(SmartDashboard.getNumber("auto distance", 5), .5));
 		m_chooser.addObject("Auto Turn", new AutoTurn(SmartDashboard.getNumber("auto turn angle", 90)));
 		SmartDashboard.putData("Auto mode", m_chooser);
 
