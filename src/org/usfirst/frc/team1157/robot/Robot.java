@@ -8,6 +8,7 @@
 package org.usfirst.frc.team1157.robot;
 
 import org.usfirst.frc.team1157.robot.commands.AutoMove;
+import org.usfirst.frc.team1157.robot.commands.AutoTurn;
 import org.usfirst.frc.team1157.robot.subsystems.Climber;
 import org.usfirst.frc.team1157.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1157.robot.subsystems.Lift;
@@ -59,13 +60,12 @@ public class Robot extends TimedRobot {
 		camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
 		// CameraServer.getInstance();
 		// UsbCamera camera2 = CameraServer.getInstance().
-
-		m_chooser.addDefault("Auto Drive Foward", new AutoMove(5, .5, 0));
+		SmartDashboard.putNumber("auto distance", 5);
+		SmartDashboard.putNumber("auto turn angle", 90);
+		m_chooser.addDefault("Auto Drive Foward", new AutoMove(SmartDashboard.getNumber("auto distance", 5), .5, 0));
+		m_chooser.addObject("Auto Turn", new AutoTurn(SmartDashboard.getNumber("auto turn angle", 90)));
 		SmartDashboard.putData("Auto mode", m_chooser);
 
-		// Connect auto-move buttons
-		// m_oi.gotoTopButton.whenPressed(new LiftGoto(LiftGoto.Position.TOP));
-		// m_oi.gotoBottomButton.whenPressed(new LiftGoto(LiftGoto.Position.BOTTOM));
 	}
 
 	/**
@@ -138,6 +138,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Gyro", gyro.getAngle());
 	}
 
 	/**
