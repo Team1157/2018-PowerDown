@@ -4,6 +4,7 @@ import org.usfirst.frc.team1157.robot.OI;
 import org.usfirst.frc.team1157.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Control the lift with a joystick
@@ -24,6 +25,7 @@ public class LiftDriveJoy extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		// Get joystick value
+	    	SmartDashboard.putNumber("Lift Position", Robot.lift.liftMotor.getSelectedSensorPosition(0));
 		double liftSpeed = OI.stickNoSpin.getY();
 		// Check if top limit is pressed
 		if (Robot.lift.limitTop.get() > 0) {

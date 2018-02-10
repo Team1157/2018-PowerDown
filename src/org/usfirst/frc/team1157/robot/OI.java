@@ -10,6 +10,7 @@ package org.usfirst.frc.team1157.robot;
 import org.usfirst.frc.team1157.robot.commands.LiftGoto;
 import org.usfirst.frc.team1157.robot.commands.ManBox;
 import org.usfirst.frc.team1157.robot.commands.TurnBox;
+import org.usfirst.frc.team1157.robot.commands.WinchDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -36,6 +37,8 @@ public class OI {
 	public JoystickButton boxOut = new JoystickButton(stickSpin, 2);
 	public JoystickButton boxSpin = new JoystickButton(stickSpin, 3);
 	public JoystickButton boxSpin2 = new JoystickButton(stickSpin, 4);
+	public JoystickButton winchIn = new JoystickButton(stickNoSpin, 6);
+	public JoystickButton winchOut = new JoystickButton(stickNoSpin, 7);
 	
 	// Initialize buttons
 	public OI() {
@@ -46,6 +49,8 @@ public class OI {
 		boxOut.whileHeld(new ManBox(-1));
 		boxSpin.whileActive(new TurnBox(1));
 		boxSpin2.whileActive(new TurnBox(-1));
+		winchIn.whileHeld(new WinchDrive(1));
+		winchOut.whileHeld(new WinchDrive(-1));
 	}
 
 }

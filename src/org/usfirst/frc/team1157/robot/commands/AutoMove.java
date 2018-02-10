@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class AutoMove extends Command {
 	
-	double distance, speed, rotation = 0;
+	double distance, speed = 0.5; 
+	double	rotation;
 	double encoderClicksPerIn =  75.757333333;//56.81831468380663;
 	
 	double encoderPosR = 0;
@@ -33,17 +34,20 @@ public class AutoMove extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 	    	distance = 72;
+	    	speed = 0.5;
 		SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
 		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(0));
 		Robot.driveTrain.leftMotor.setSelectedSensorPosition(0, 0, 500);
 		Robot.driveTrain.rightMotor.setSelectedSensorPosition(0, 0, 500);
-		Robot.driveTrain.tankDrive.arcadeDrive(speed, 0);
 		count = 0;
+		Robot.gyro.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	// Cole = god
 	protected void execute() {
+	    
+	    
 	        if(initialized == false) {
 	            
 	    		if(Robot.driveTrain.rightMotor.getSelectedSensorPosition(0) != 0 || Robot.driveTrain.leftMotor.getSelectedSensorPosition(0) != 0){
@@ -52,9 +56,7 @@ public class AutoMove extends Command {
 	    		    initialized = true;
 	    		}
 	    	    
-	    	}else {
-            		Robot.driveTrain.tankDrive.arcadeDrive(0.5, rotation);
-            		
+	    	}else {            		
             		encoderPosR = (double)Robot.driveTrain.rightMotor.getSelectedSensorPosition(0);
             		encoderPosL = (double)Robot.driveTrain.leftMotor.getSelectedSensorPosition(0);
             		
@@ -75,7 +77,21 @@ public class AutoMove extends Command {
             		
             		count = count + 1;
             		SmartDashboard.putNumber("Loop Counter", count);
-	    		
+            		rotation = -(0-Robot.gyro.getAngle())/90;
+            		Robot.driveTrain.tankDrive.arcadeDrive(speed, rotation);
+            		
+            		/*encoder corection
+            		 * double dif = Math.abs(Math.abs(encoderPosR) - Math.abs(encoderPosL));
+            		SmartDashboard.putNumber("dif", dif);
+            		if (dif > 10) {
+            		    if(Math.abs(encoderPosR) > Math.abs(encoderPosL)) {
+            			Robot.driveTrain.tankDrive.tankDrive(speed + dif/200, speed);
+            		    } else {
+            			Robot.driveTrain.tankDrive.tankDrive(speed, speed + dif/200);
+            		    }
+            		} else {
+            		    Robot.driveTrain.tankDrive.tankDrive(speed, speed);
+            		}*/
 	        }
 		
 	}

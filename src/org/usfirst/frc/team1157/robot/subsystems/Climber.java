@@ -1,7 +1,6 @@
 package org.usfirst.frc.team1157.robot.subsystems;
 
 import org.usfirst.frc.team1157.robot.RobotMap;
-import org.usfirst.frc.team1157.robot.commands.WinchDrive;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,7 +18,7 @@ public class Climber extends Subsystem {
 	}
 	
 	public void initDefaultCommand() {
-		setDefaultCommand(new WinchDrive());
+		//setDefaultCommand(new WinchDrive());
 	}
 	
 	public void stop() {
