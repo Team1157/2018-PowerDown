@@ -30,11 +30,11 @@ public class PSTank extends Command {
 		 * tank();
 		 */
 
-		//double lDamp = .75 + .25 * OI.ps.getRawAxis(3);
-		//double rDamp = .75 + .25 * OI.ps.getRawAxis(4);
+		double lDamp = .6;// + .25 * OI.ps.getRawAxis(3);
+		double rDamp = .6;// + .25 * OI.ps.getRawAxis(4);
 
-		double lSpeed = -OI.ps.getRawAxis(1) /** lDamp*/;
-		double rSpeed = -OI.ps.getRawAxis(5) /** rDamp*/;
+		double lSpeed = -OI.ps.getRawAxis(1) * lDamp;
+		double rSpeed = -OI.ps.getRawAxis(5) * rDamp;
 
 		// OI.ps.setRumble(RumbleType.kLeftRumble, lSpeed);
 		// OI.ps.setRumble(RumbleType.kRightRumble, rSpeed);
