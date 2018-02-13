@@ -33,8 +33,13 @@ public class AutoMove extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-	    	distance = 72;
+	    	//TODO:remove
+	    	distance = 70;
 	    	speed = 0.5;
+	    	
+	    	distance -= 2;
+	    	Finished = false;
+	    	
 		SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
 		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(0));
 		Robot.driveTrain.leftMotor.setSelectedSensorPosition(0, 0, 500);
@@ -62,6 +67,7 @@ public class AutoMove extends Command {
             		
             		SmartDashboard.putNumber("leftM-Enc - AM", encoderPosR);
             		SmartDashboard.putNumber("rightM-Enc - AM", encoderPosL);
+            		SmartDashboard.putNumber("Gyro", Robot.gyro.getAngle());
         		
             		distanceTraveledR = Math.abs(encoderPosR/encoderClicksPerIn);
             		distanceTraveledL = Math.abs(encoderPosL/encoderClicksPerIn);
@@ -77,7 +83,7 @@ public class AutoMove extends Command {
             		
             		count = count + 1;
             		SmartDashboard.putNumber("Loop Counter", count);
-            		rotation = -(0-Robot.gyro.getAngle())/90;
+            		rotation = (0-Robot.gyro.getAngle())/10;
             		Robot.driveTrain.tankDrive.arcadeDrive(speed, rotation);
             		
             		/*encoder corection

@@ -28,9 +28,9 @@ public class OI {
 	public static Joystick ps = new Joystick(2);
 
 	// Lift buttons
-	public JoystickButton liftGotoTop = new JoystickButton(stickSpin, 6);
-	public JoystickButton liftGotoMiddle = new JoystickButton(stickSpin, 8);
-	public JoystickButton liftGotoBottom = new JoystickButton(stickSpin, 10);
+	public JoystickButton liftGotoTop = new JoystickButton(stickSpin, 8);
+	public JoystickButton liftGotoMiddle = new JoystickButton(stickSpin, 10);
+	public JoystickButton liftGotoBottom = new JoystickButton(stickSpin, 12);
 	
 	// Manipulator buttons
 	public JoystickButton boxIn = new JoystickButton(stickSpin, 1);
@@ -43,8 +43,8 @@ public class OI {
 	// Initialize buttons
 	public OI() {
 		liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
-		liftGotoBottom.whenPressed(new LiftGoto(LiftGoto.LiftDestination.BOTTOM));
 		liftGotoMiddle.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
+		liftGotoBottom.whenPressed(new LiftGoto(LiftGoto.LiftDestination.BOTTOM));
 		boxIn.whileHeld(new ManBox(1));
 		boxOut.whileHeld(new ManBox(-1));
 		boxSpin.whileActive(new TurnBox(1));
