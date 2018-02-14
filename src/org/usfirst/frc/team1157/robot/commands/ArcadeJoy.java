@@ -24,19 +24,26 @@ public class ArcadeJoy extends Command {
 	}
 
 	// Called repeatedly when this Command is scheduled to run
-	protected void execute() {
+	/*protected void execute() {
 		double damp = 1.0 - (OI.stickSpin.getThrottle() / 2);
 		double ySpeed = OI.stickSpin.getY() * damp;
-		double xAxis = OI.stickSpin.getX() * .75 * damp;
 		double zRotation = OI.stickSpin.getZ() * .75 * damp;
 
-		if (OI.stickSpin.getRawButton(7))
-			rot = !rot;
-
-		Robot.driveTrain.tankDrive.arcadeDrive(ySpeed, (rot) ? zRotation : xAxis, squaredInputs);
+		Robot.driveTrain.tankDrive.arcadeDrive(ySpeed, zRotation, squaredInputs);
 		SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
 		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(1));
+	}*/
+	protected void execute() {
+		double damp = 1.0 - (OI.stickNoSpin.getThrottle() / 2);
+		if(Robot.lift.liftMotor.getSelectedSensorPosition(0) > 4500) {
+		    damp = 0.5;
+		}
+		double ySpeed = -OI.stickNoSpin.getY() * damp;
+		double xAxis = OI.stickNoSpin.getX() * .75 * damp;
 
+		Robot.driveTrain.tankDrive.arcadeDrive(ySpeed, xAxis, squaredInputs);
+		SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(1));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

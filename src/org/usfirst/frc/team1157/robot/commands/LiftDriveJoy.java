@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Control the lift with a joystick
  */
 public class LiftDriveJoy extends Command {
+    
+    int position = 0;
 
     public LiftDriveJoy() {
 	requires(Robot.lift);
@@ -24,10 +26,17 @@ public class LiftDriveJoy extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-	// Get joystick value
-	SmartDashboard.putNumber("Lift Position", Robot.lift.liftMotor.getSelectedSensorPosition(0));
+	int currentPosition = Robot.lift.liftMotor.getSelectedSensorPosition(0);
+	SmartDashboard.putNumber("Lift Position", currentPosition);
 	double liftSpeed = OI.stickNoSpin.getY();
-	// Check if top limit is pressed
+	
+	if (liftSpeed == 0) {
+	    if (currentPosition < position) {
+		Robot.lift.liftMotor.set(0.1);
+		
+	    }
+	} else position = currentPosition;
+	
 	if (Robot.lift.limitTop.get() > 0) { // Only allow to move down
 	    if (liftSpeed < 0) {
 		Robot.lift.liftMotor.set(liftSpeed);
@@ -36,7 +45,7 @@ public class LiftDriveJoy extends Command {
 		Robot.lift.liftMotor.set(0);
 	    }
 	}
-	// Check if bottom limit is pressed
+	
 	else if (Robot.lift.limitBottom.get() > 0) { // Only allow to move up
 	    if (liftSpeed > 0) {
 		Robot.lift.liftMotor.set(liftSpeed);

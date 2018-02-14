@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1157.robot.subsystems;
 
 import org.usfirst.frc.team1157.robot.RobotMap;
+import org.usfirst.frc.team1157.robot.commands.ArcadeJoy;
 import org.usfirst.frc.team1157.robot.commands.PSTank;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -34,7 +35,10 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void initDefaultCommand() {
-		setDefaultCommand(new PSTank());
+	    //setDefaultCommand(new PSTank());
+	    //setDefaultCommand(new ArcadeJoy());
+	    setDefaultCommand(new ArcadeJoy());
+		
 	}
 
 	public void stop() {

@@ -19,7 +19,6 @@ public class Lift extends Subsystem {
 	
 	public Counter limitTop = new Counter(RobotMap.limitTop);
 	public Counter limitBottom = new Counter(RobotMap.limitBottom);
-
 	
 	public Lift() {
 		// Enable encoder
@@ -27,7 +26,7 @@ public class Lift extends Subsystem {
 	}
 	
 	public void initDefaultCommand() {
-		setDefaultCommand(new LiftDriveJoy());
+		//setDefaultCommand(new LiftDriveJoy());
 	}
 
 	public void stop() {
