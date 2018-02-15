@@ -12,7 +12,7 @@ public class AutoTurn extends Command {
 	
 	boolean finished = false;
 	double turnSpeed, angle;
-	double Kp = 0.4;
+	double Kp = 0.3;
 	double error;
 	long count = 0;
 	boolean initialized = false;
@@ -29,7 +29,7 @@ public class AutoTurn extends Command {
 	protected void initialize() {
 	    Robot.gyro.reset();
 	    //TODO:remove
-	    angle = 90;
+	    //angle = 90;
 	    count = 0;
 	    finished = false;
 		
@@ -50,7 +50,7 @@ public class AutoTurn extends Command {
     	}else {  
 
 		// 
-		error = (Math.abs(angle) - Robot.gyro.getAngle()) / 30.0;
+		error = (angle - Robot.gyro.getAngle()) / 25.0;
 		turnSpeed = Kp * (error);
 
 		if (Math.abs(Robot.gyro.getAngle() - angle) >= 2.5) {
@@ -62,7 +62,7 @@ public class AutoTurn extends Command {
 			finished = true;
 		}
 		
-		count = count + 1;
+		count += 1;
     		SmartDashboard.putNumber("Loop Counter", count);
 
 		/*

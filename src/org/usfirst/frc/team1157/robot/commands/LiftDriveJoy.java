@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Control the lift with a joystick
  */
 public class LiftDriveJoy extends Command {
-    
+
     int position = 0;
 
     public LiftDriveJoy() {
@@ -28,33 +28,35 @@ public class LiftDriveJoy extends Command {
     protected void execute() {
 	int currentPosition = Robot.lift.liftMotor.getSelectedSensorPosition(0);
 	SmartDashboard.putNumber("Lift Position", currentPosition);
-	double liftSpeed = OI.stickNoSpin.getY();
-	
-	if (liftSpeed == 0) {
+	double yAxis = OI.stickNoSpin.getY();
+
+	if (Math.abs(yAxis) < 0.05) {
 	    if (currentPosition < position) {
-		Robot.lift.liftMotor.set(0.1);
-		
+		//yAxis = -(position - currentPosition)/2500;
+		yAxis = -0.075;
 	    }
-	} else position = currentPosition;
-	
+	} else {
+	    position = currentPosition;
+	}
+
 	if (Robot.lift.limitTop.get() > 0) { // Only allow to move down
-	    if (liftSpeed < 0) {
-		Robot.lift.liftMotor.set(liftSpeed);
+	    if (yAxis < 0) {
+		Robot.lift.liftMotor.set(yAxis);
 		Robot.lift.limitTop.reset();
 	    } else {
 		Robot.lift.liftMotor.set(0);
 	    }
-	}
-	
-	else if (Robot.lift.limitBottom.get() > 0) { // Only allow to move up
-	    if (liftSpeed > 0) {
-		Robot.lift.liftMotor.set(liftSpeed);
+	} else if (Robot.lift.limitBottom.get() > 0) { // Only allow to move up
+	    if (yAxis > 0) {
+		Robot.lift.liftMotor.set(yAxis);
 		Robot.lift.limitBottom.reset();
 	    } else {
 		Robot.lift.liftMotor.set(0);
 	    }
 	} else { // Run as normal
-	    Robot.lift.liftMotor.set(liftSpeed);
+	    
+	    Robot.lift.liftMotor.set(yAxis);
+
 	}
     }
 

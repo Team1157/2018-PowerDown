@@ -20,7 +20,7 @@ public class Manipulator extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-        setDefaultCommand(new JoyBox());
+        //setDefaultCommand(new JoyBox());
     }
     
     /**

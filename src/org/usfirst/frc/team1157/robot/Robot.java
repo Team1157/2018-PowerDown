@@ -8,6 +8,7 @@
 package org.usfirst.frc.team1157.robot;
 
 import org.usfirst.frc.team1157.robot.commands.AutoMove;
+import org.usfirst.frc.team1157.robot.commands.AutoTestGroup;
 import org.usfirst.frc.team1157.robot.commands.AutoTurn;
 import org.usfirst.frc.team1157.robot.subsystems.Climber;
 import org.usfirst.frc.team1157.robot.subsystems.DriveTrain;
@@ -64,6 +65,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("auto turn angle", 90);
 		m_chooser.addDefault("Auto Drive Foward", new AutoMove(SmartDashboard.getNumber("auto distance", 5), .5));
 		m_chooser.addObject("Auto Turn", new AutoTurn(SmartDashboard.getNumber("auto turn angle", 90)));
+		m_chooser.addObject("testGroup", new AutoTestGroup());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 	}

@@ -26,7 +26,7 @@ public class Lift extends Subsystem {
 	}
 	
 	public void initDefaultCommand() {
-		//setDefaultCommand(new LiftDriveJoy());
+		setDefaultCommand(new LiftDriveJoy());
 	}
 
 	public void stop() {
