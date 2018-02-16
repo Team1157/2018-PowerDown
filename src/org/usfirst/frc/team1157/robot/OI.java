@@ -26,6 +26,11 @@ public class OI {
 	public static Joystick stickSpin = new Joystick(0);
 	public static Joystick stickNoSpin = new Joystick(1);
 	public static Joystick ps = new Joystick(2);
+/* klsjhflkjashdkl();
+ *  lkdhfkajhgsku [-0,fj;las
+ *  jkghajdghsfkh[q
+ *  ' -[0949t6u jflkjh's
+ *  */
 
 	// Lift buttons
 	public JoystickButton liftGotoTop = new JoystickButton(stickNoSpin, 4);

@@ -2,6 +2,7 @@ package org.usfirst.frc.team1157.robot.commands;
 
 import org.usfirst.frc.team1157.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -9,7 +10,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Movement during autonomous mode.
  */
 public class AutoMove extends Command {
-
+    double kDist = 42;
+    double pointNoReturn = 0;
+    double decell = 0;
+    
+    Timer timer;
+    double currentV = 0;
+    double minV = .3;
+    double maxV = 1;
+    double accel = .1;
+    double currentTime = 0;
+    double oldTime = 0;
+    
+    
+    
     double distance, speed = 0.5;
     double rotation;
     double encoderClicksPerIn = 75.757333333;// 56.81831468380663;
@@ -25,18 +39,30 @@ public class AutoMove extends Command {
     long count = 0;
 
     public AutoMove(double distance, double speed) {
+	
 	requires(Robot.driveTrain);
+	
+	
 	this.distance = distance;
 	this.speed = speed;
+	this.timer = new Timer();
+	timer.start();
 	// setTimeout(time);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+	currentV = minV;
+	oldTime = 0;
+	currentTime = 0;
+	
+	pointNoReturn = 0;
+	
 	// TODO:remove
 	//distance = 70;
 	//speed = 0.5;
-
+	timer.reset();
+	
 	distance -= 2;
 	Finished = false;
 
@@ -82,12 +108,29 @@ public class AutoMove extends Command {
 	    if (distanceTraveledR >= distance || distanceTraveledL >= distance) {
 		Finished = true;
 	    }
-
-	    count = count + 1;
-	    SmartDashboard.putNumber("Loop Counter", count);
+	    
+	    pointNoReturn = distance - kDist*currentV;
+	    if (distanceTraveledL <= pointNoReturn) {
+		if (currentV < maxV) {
+		    currentTime = timer.get();
+		    currentV = currentV + accel*(currentTime - oldTime);
+		    oldTime = currentTime;
+		} 
+		
+	    } else {
+		if (currentV > minV) {
+		    currentTime = timer.get();
+		    currentV = currentV - decell*(currentTime - oldTime);
+		    oldTime = currentTime;
+		} 
+	    }
+	    //count = count + 1;
+	    //SmartDashboard.putNumber("Loop Counter", count);
 	    rotation = (0 - Robot.gyro.getAngle()) / 10;
-	    Robot.driveTrain.tankDrive.arcadeDrive(speed, rotation);
-
+	    Robot.driveTrain.tankDrive.arcadeDrive(currentV, rotation);
+	    
+	    
+	    
 	    /*
 	     * encoder corection double dif = Math.abs(Math.abs(encoderPosR) -
 	     * Math.abs(encoderPosL)); SmartDashboard.putNumber("dif", dif); if (dif > 10) {
