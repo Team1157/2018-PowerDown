@@ -9,9 +9,20 @@ public class AutoTestGroup extends CommandGroup {
 
     public AutoTestGroup() {
 	
-	addSequential(new AutoMove(72, 0.5));
-	addSequential(new AutoTurn(-90));
-	addSequential(new AutoMove(72, 0.5));
+	addSequential(new AutoMove(72, false));
+	addSequential(new AutoTurn(false));
+	addSequential(new AutoMove(72, false));
+	addSequential(new AutoTurn(false));
+	addSequential(new AutoMove(72, false));
+	addSequential(new AutoTurn(false));
+	addSequential(new AutoMove(72, false));
+	addSequential(new AutoMove(72, true));
+	addSequential(new AutoTurn(true));
+	addSequential(new AutoMove(72, true));
+	addSequential(new AutoTurn(true));
+	addSequential(new AutoMove(72, true));
+	addSequential(new AutoTurn(true));
+	addSequential(new AutoMove(72, true));
 	addSequential(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
         // Add Commands here:
         // e.g. addSequential(new Command1());

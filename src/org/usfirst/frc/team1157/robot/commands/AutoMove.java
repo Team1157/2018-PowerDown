@@ -10,19 +10,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Movement during autonomous mode.
  */
 public class AutoMove extends Command {
-    double kDist = 42;
+    double kDist = 70;
     double pointNoReturn = 0;
-    double decell = 0;
-    
+    double decell = 0.35;
+    boolean backwards = false;
     Timer timer;
     double currentV = 0;
     double minV = .3;
     double maxV = 1;
-    double accel = .1;
+    double accel = .2;
     double currentTime = 0;
     double oldTime = 0;
-    
-    
     
     double distance, speed = 0.5;
     double rotation;
@@ -38,13 +36,12 @@ public class AutoMove extends Command {
     boolean initialized = false;
     long count = 0;
 
-    public AutoMove(double distance, double speed) {
+    public AutoMove(double distance, boolean backwards) {
 	
 	requires(Robot.driveTrain);
 	
-	
-	this.distance = distance;
-	this.speed = speed;
+	this.backwards = backwards;
+	this.distance = Math.abs(distance);
 	this.timer = new Timer();
 	timer.start();
 	// setTimeout(time);
@@ -63,7 +60,6 @@ public class AutoMove extends Command {
 	//speed = 0.5;
 	timer.reset();
 	
-	distance -= 2;
 	Finished = false;
 
 	initialized = false;
@@ -84,6 +80,8 @@ public class AutoMove extends Command {
 
 	    if (Robot.driveTrain.rightMotor.getSelectedSensorPosition(0) != 0
 		    || Robot.driveTrain.leftMotor.getSelectedSensorPosition(0) != 0) {
+		Robot.driveTrain.leftMotor.setSelectedSensorPosition(0, 0, 500);
+		Robot.driveTrain.rightMotor.setSelectedSensorPosition(0, 0, 500);
 		// Do nothing
 	    } else {
 		initialized = true;
@@ -109,23 +107,30 @@ public class AutoMove extends Command {
 		Finished = true;
 	    }
 	    
-	    pointNoReturn = distance - kDist*currentV;
+	    pointNoReturn = distance - ((223.9*Math.pow(Math.abs(currentV), 2)) - (85.3*Math.abs(currentV)) - 2);
 	    if (distanceTraveledL <= pointNoReturn) {
-		if (currentV < maxV) {
+		if (Math.abs(currentV) < maxV) {
 		    currentTime = timer.get();
-		    currentV = currentV + accel*(currentTime - oldTime);
+		    currentV = Math.abs(currentV) + accel*(currentTime - oldTime);
 		    oldTime = currentTime;
+		    SmartDashboard.putNumber("Speed", currentV);
+		    
 		} 
 		
 	    } else {
-		if (currentV > minV) {
+		if (Math.abs(currentV) > minV) {
 		    currentTime = timer.get();
-		    currentV = currentV - decell*(currentTime - oldTime);
+		    currentV = Math.abs(currentV) - decell*(currentTime - oldTime);
 		    oldTime = currentTime;
-		} 
+		}
 	    }
-	    //count = count + 1;
-	    //SmartDashboard.putNumber("Loop Counter", count);
+	    count = count + 1;
+	    SmartDashboard.putNumber("Loop Counter", count);
+	    
+	    if(backwards) {
+		currentV = Math.abs(currentV) * -1;
+	    }
+	    SmartDashboard.putNumber("Speed", currentV);
 	    rotation = (0 - Robot.gyro.getAngle()) / 10;
 	    Robot.driveTrain.tankDrive.arcadeDrive(currentV, rotation);
 	    

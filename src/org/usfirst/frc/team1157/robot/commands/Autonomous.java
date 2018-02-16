@@ -48,40 +48,42 @@ public class Autonomous extends CommandGroup {
 	}
 
 	private void notMiddle() {
-		int variable;
+		boolean variable;
 		if (start == Position.LEFT)
-			variable = 1;
+			variable = false;
 		else
-			variable = -1;
+			variable = true;
 		
 		if (switchNear == start) {
-			addSequential(new AutoMove(1, 1));
-			addSequential(new AutoTurn(variable * 90));
-			addSequential(new AutoMove(1, 1));
+			addSequential(new AutoMove(1, false));
+			addSequential(new AutoTurn(variable));
+			addSequential(new AutoMove(1, false));
 			addSequential(new AutoDropBox());
 		} else if (scale == start) {
-			addSequential(new AutoMove(10, 1));
-			addSequential(new AutoTurn(variable * 90));
-			addSequential(new AutoMove(1, 1));
+			addSequential(new AutoMove(10, false));
+			addSequential(new AutoTurn(variable));
+			addSequential(new AutoMove(1, false));
 			addSequential(new AutoDropBox());
 		} else
-			addSequential(new AutoMove(1, 1));
+			addSequential(new AutoMove(1, false));
 
 	}
 
 	private void middle() {
-		double angle;
-		if (switchNear == Position.LEFT) /* TODO: figure me out */
-			angle = 60;
+	    //TODO fix with 90 angles
+		boolean switchLeft;
+		if (switchNear == Position.LEFT) 
+			switchLeft = true;
 		else
-			angle = -60;
+			switchLeft = false;
 		
-		addSequential(new AutoMove(1, 1));
-		addSequential(new AutoTurn(angle));
-		addSequential(new AutoMove(1, 1));
-		addSequential(new AutoTurn(-angle));
-		addSequential(new AutoMove(1, 1));
+		addSequential(new AutoMove(1, false));
+		addSequential(new AutoTurn(switchLeft));
+		addSequential(new AutoMove(1, false));
+		addSequential(new AutoTurn(! switchLeft));
+		addSequential(new AutoMove(1, false));
 		addSequential(new AutoDropBox());
+		
 	}
 	// addSequential(new Command2());
 
