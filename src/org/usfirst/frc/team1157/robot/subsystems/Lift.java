@@ -18,6 +18,7 @@ public class Lift extends Subsystem {
 	public WPI_TalonSRX liftMotor = new WPI_TalonSRX(RobotMap.lift);
 	
 	public Counter limitTop = new Counter(RobotMap.limitTop);
+	limitTop.clearUpSource();
 	public Counter limitBottom = new Counter(RobotMap.limitBottom);
 	
 	public Lift() {
