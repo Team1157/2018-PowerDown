@@ -33,11 +33,17 @@ public class OI {
  *  */
 
 	// Lift buttons
-	public JoystickButton liftGotoTop = new JoystickButton(stickNoSpin, 4);
-	public JoystickButton liftGotoMiddle = new JoystickButton(stickNoSpin, 2);
-	public JoystickButton liftGotoBottom = new JoystickButton(stickNoSpin, 3);
+	//public JoystickButton liftGotoTop = new JoystickButton(stickNoSpin, 4);
+	public JoystickButton boxOut2 = new JoystickButton(stickNoSpin, 1);
+	public JoystickButton boxIn2 = new JoystickButton(stickNoSpin, 3);
+	public JoystickButton liftGotoBottom = new JoystickButton(stickNoSpin, 2);
+	public JoystickButton boxSpin3 = new JoystickButton(stickNoSpin, 4);
+	public JoystickButton boxSpin4 = new JoystickButton(stickNoSpin, 5);
 	
 	// Manipulator buttons
+	public JoystickButton liftGotoBottom2 = new JoystickButton(stickSpin, 7);
+	public JoystickButton liftGotoMiddle2 = new JoystickButton(stickSpin, 6);
+	public JoystickButton liftGotoTop2 = new JoystickButton(stickSpin, 5);
 	public JoystickButton boxIn = new JoystickButton(stickSpin, 1);
 	public JoystickButton boxOut = new JoystickButton(stickSpin, 2);
 	public JoystickButton boxSpin = new JoystickButton(stickSpin, 3);
@@ -47,13 +53,20 @@ public class OI {
 	
 	// Initialize buttons
 	public OI() {
-		liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
-		liftGotoMiddle.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
+		//liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
+		//liftGotoMiddle.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
 		liftGotoBottom.whenPressed(new LiftGoto(LiftGoto.LiftDestination.BOTTOM));
+		liftGotoTop2.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
+		liftGotoMiddle2.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
+		liftGotoBottom2.whenPressed(new LiftGoto(LiftGoto.LiftDestination.BOTTOM));
 		boxIn.whileHeld(new ManBox(1));
+		boxIn2.whileHeld(new ManBox(1));
 		boxOut.whileHeld(new ManBox(-1));
+		boxOut2.whileHeld(new ManBox(-1));
 		boxSpin.whileActive(new TurnBox(1));
 		boxSpin2.whileActive(new TurnBox(-1));
+		boxSpin3.whileActive(new TurnBox(1));
+		boxSpin4.whileActive(new TurnBox(-1));
 		winchIn.whileHeld(new WinchDrive(1));
 		winchOut.whileHeld(new WinchDrive(-1));
 	}

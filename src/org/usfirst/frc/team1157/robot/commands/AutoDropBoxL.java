@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  * Automatically drop the box on the scale.
  */
-public class AutoDropBox extends CommandGroup {
+public class AutoDropBoxL extends CommandGroup {
 
-	public AutoDropBox() {
+	public AutoDropBoxL() {
 		
-		addSequential(new LiftGoto(LiftGoto.LiftDestination.TOP));
+		addSequential(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
 		addSequential(new AutoMove(6, false));
 		addSequential(new LaunchBox());
 		addSequential(new AutoMove(6, true));

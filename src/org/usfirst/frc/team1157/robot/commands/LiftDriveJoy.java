@@ -30,15 +30,15 @@ public class LiftDriveJoy extends Command {
 	SmartDashboard.putNumber("Lift Position", currentPosition);
 	double yAxis = OI.stickNoSpin.getY();
 
-	if (Math.abs(yAxis) < 0.05) {
-	    if (currentPosition < position) {
+	if (Math.abs(yAxis) < 0.1) {
+	    if (currentPosition < position || currentPosition > 1000) {
 		//yAxis = -(position - currentPosition)/2500;
 		yAxis = -0.075;
 	    }
 	} else {
 	    position = currentPosition;
 	}
-
+	SmartDashboard.putNumber("limit", Robot.lift.limitBottom.get());
 	if (Robot.lift.limitTop.get() > 0) { // Only allow to move down
 	    if (yAxis < 0) {
 		Robot.lift.liftMotor.set(yAxis);

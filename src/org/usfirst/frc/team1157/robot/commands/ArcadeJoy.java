@@ -45,7 +45,7 @@ public class ArcadeJoy extends Command {
 	}
 	double ySpeed = -OI.stickSpin.getY() * damp;
 	double xAxis = OI.stickSpin.getX() * .75 * damp;
-	double zRotation = OI.stickSpin.getZ() * damp;
+	double zRotation = OI.stickSpin.getZ() * .75 * damp;
 
 	Robot.driveTrain.tankDrive.arcadeDrive(ySpeed, zRotation, squaredInputs);
 	SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
