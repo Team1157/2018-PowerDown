@@ -6,7 +6,7 @@ import org.usfirst.frc.team1157.robot.commands.LiftDriveJoy;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -17,9 +17,7 @@ public class Lift extends Subsystem {
 
 	public WPI_TalonSRX liftMotor = new WPI_TalonSRX(RobotMap.lift);
 	
-	public Counter limitTop = new Counter(RobotMap.limitTop);
-	limitTop.clearUpSource();
-	public Counter limitBottom = new Counter(RobotMap.limitBottom);
+	public DigitalInput limitBottom = new DigitalInput(RobotMap.limitBottom);
 	
 	public Lift() {
 		// Enable encoder

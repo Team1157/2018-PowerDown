@@ -7,9 +7,12 @@
 
 package org.usfirst.frc.team1157.robot;
 
+import javax.swing.text.Position;
+
 import org.usfirst.frc.team1157.robot.commands.AutoMove;
 import org.usfirst.frc.team1157.robot.commands.AutoTestGroup;
 import org.usfirst.frc.team1157.robot.commands.AutoTurn;
+import org.usfirst.frc.team1157.robot.commands.Autonomous;
 import org.usfirst.frc.team1157.robot.subsystems.Climber;
 import org.usfirst.frc.team1157.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1157.robot.subsystems.Lift;
@@ -55,10 +58,10 @@ public class Robot extends TimedRobot {
 
 		m_oi = new OI();
 
-		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(0);
-		camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
-		camera = CameraServer.getInstance().startAutomaticCapture(1);
-		camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+		CameraServer.getInstance().startAutomaticCapture();
+		//camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+		//camera = CameraServer.getInstance().startAutomaticCapture(1);
+		//camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
 		// CameraServer.getInstance();
 		// UsbCamera camera2 = CameraServer.getInstance().
 		SmartDashboard.putNumber("auto distance", 5);
@@ -66,6 +69,9 @@ public class Robot extends TimedRobot {
 		m_chooser.addDefault("Auto Drive Foward", new AutoMove(20, true));
 		m_chooser.addObject("Auto Turn", new AutoTurn(true));
 		m_chooser.addObject("testGroup", new AutoTestGroup());
+		m_chooser.addObject("auto left", new Autonomous(Autonomous.Position.LEFT));
+		m_chooser.addObject("auto middke", new Autonomous(Autonomous.Position.MIDDLE));
+		m_chooser.addObject("auto r", new Autonomous(Autonomous.Position.RIGHT));
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 	}

@@ -5,17 +5,19 @@ import org.usfirst.frc.team1157.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Picks up a box.
+ * Launches a box.
  */
-public class GrabBox extends Command {
-
-    public GrabBox() {
+public class suckBox extends Command {
+//TODO:add time/end conditon
+    public suckBox() {
     	requires(Robot.manipulator);
+    	setTimeout(.5);
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -25,17 +27,17 @@ public class GrabBox extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	
+	Robot.manipulator.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	
+	end();
     }
 }

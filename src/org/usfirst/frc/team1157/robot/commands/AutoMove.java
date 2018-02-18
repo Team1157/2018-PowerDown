@@ -44,7 +44,7 @@ public class AutoMove extends Command {
 	this.distance = Math.abs(distance);
 	this.timer = new Timer();
 	timer.start();
-	// setTimeout(time);
+	setTimeout(distance/2);
     }
 
     // Called just before this Command runs the first time
@@ -151,7 +151,7 @@ public class AutoMove extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
 	// print("done");
-	return Finished;
+	return Finished || isTimedOut();
     }
 
     // Called once after isFinished returns true
