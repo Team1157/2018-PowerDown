@@ -44,7 +44,7 @@ public class OI {
 	public JoystickButton liftGotoBottom2 = new JoystickButton(stickSpin, 7);
 	public JoystickButton liftGotoMiddle2 = new JoystickButton(stickSpin, 6);
 	public JoystickButton liftGotoTop2 = new JoystickButton(stickSpin, 5);
-	public JoystickButton boxIn = new JoystickButton(stickSpin, 1);
+	//public JoystickButton boxIn = new JoystickButton(stickSpin, 1);
 	public JoystickButton boxOut = new JoystickButton(stickSpin, 2);
 	public JoystickButton boxSpin = new JoystickButton(stickSpin, 3);
 	public JoystickButton boxSpin2 = new JoystickButton(stickSpin, 4);
@@ -59,7 +59,7 @@ public class OI {
 		liftGotoTop2.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
 		liftGotoMiddle2.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
 		liftGotoBottom2.whenPressed(new LiftGoto(LiftGoto.LiftDestination.WARNING));
-		boxIn.whileHeld(new ManBox(1));
+		//boxIn.whileHeld(new ManBox(1));
 		boxIn2.whileHeld(new ManBox(1));
 		boxOut.whileHeld(new ManBox(-1));
 		boxOut2.whileHeld(new ManBox(-1));

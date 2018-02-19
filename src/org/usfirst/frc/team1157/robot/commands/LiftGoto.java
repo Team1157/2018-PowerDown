@@ -3,7 +3,6 @@ package org.usfirst.frc.team1157.robot.commands;
 import org.usfirst.frc.team1157.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Goto a pre-programmed position on the lift
@@ -41,9 +40,6 @@ public class LiftGoto extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		SmartDashboard.putNumber("Target:", target.position);
-		SmartDashboard.putNumber("Current", Robot.lift.liftMotor.getSelectedSensorPosition(0));
-		SmartDashboard.putString("dir", (direction)?"up":"down");
 		if (direction) {
 		    Robot.lift.liftMotor.set(-0.6);
 		} else {

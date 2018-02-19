@@ -4,7 +4,6 @@ import org.usfirst.frc.team1157.robot.OI;
 import org.usfirst.frc.team1157.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Drive the robot with a PS4 controller in tank mode
@@ -40,8 +39,6 @@ public class PSTank extends Command {
 		// OI.ps.setRumble(RumbleType.kRightRumble, rSpeed);
 
 		Robot.driveTrain.tankDrive.tankDrive(lSpeed, rSpeed, true);
-		SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
-		SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(0));
 	}
 
 	/*

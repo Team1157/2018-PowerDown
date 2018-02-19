@@ -4,7 +4,6 @@ import org.usfirst.frc.team1157.robot.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Movement during autonomous mode.
@@ -64,8 +63,6 @@ public class AutoMove extends Command {
 
 	initialized = false;
 	
-	SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
-	SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(0));
 	Robot.driveTrain.leftMotor.setSelectedSensorPosition(0, 0, 500);
 	Robot.driveTrain.rightMotor.setSelectedSensorPosition(0, 0, 500);
 	count = 0;
@@ -91,17 +88,9 @@ public class AutoMove extends Command {
 	    encoderPosR = (double) Robot.driveTrain.rightMotor.getSelectedSensorPosition(0);
 	    encoderPosL = (double) Robot.driveTrain.leftMotor.getSelectedSensorPosition(0);
 
-	    SmartDashboard.putNumber("leftM-Enc - AM", encoderPosR);
-	    SmartDashboard.putNumber("rightM-Enc - AM", encoderPosL);
-	    SmartDashboard.putNumber("Gyro", Robot.gyro.getAngle());
 
 	    distanceTraveledR = Math.abs(encoderPosR / encoderClicksPerIn);
 	    distanceTraveledL = Math.abs(encoderPosL / encoderClicksPerIn);
-
-	    SmartDashboard.putNumber("Left Distance (in)", distanceTraveledR);
-	    SmartDashboard.putNumber("Right Distance (in)", distanceTraveledL);
-
-	    SmartDashboard.putNumber("Target Distance (in)", distance);
 
 	    if (distanceTraveledR >= distance || distanceTraveledL >= distance) {
 		Finished = true;
@@ -113,7 +102,6 @@ public class AutoMove extends Command {
 		    currentTime = timer.get();
 		    currentV = Math.abs(currentV) + accel*(currentTime - oldTime);
 		    oldTime = currentTime;
-		    SmartDashboard.putNumber("Speed", currentV);
 		    
 		} 
 		
@@ -124,13 +112,10 @@ public class AutoMove extends Command {
 		    oldTime = currentTime;
 		}
 	    }
-	    count = count + 1;
-	    SmartDashboard.putNumber("Loop Counter", count);
 	    
 	    if(backwards) {
 		currentV = Math.abs(currentV) * -1;
 	    }
-	    SmartDashboard.putNumber("Speed", currentV);
 	    rotation = (0 - Robot.gyro.getAngle()) / 10;
 	    Robot.driveTrain.tankDrive.arcadeDrive(currentV, rotation);
 	    

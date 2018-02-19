@@ -4,7 +4,6 @@ import org.usfirst.frc.team1157.robot.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Turning of robot during autonomous
@@ -74,7 +73,6 @@ public class AutoTurn extends Command {
 
 	    if (Math.abs(currAngle) > 1) {
 		// Do nothing
-		SmartDashboard.putNumber("Gyro", currAngle);
 	    } else {
 		initialized = true;
 	    }
@@ -90,7 +88,6 @@ public class AutoTurn extends Command {
 		    currentTime = timer.get();
 		    currentV = Math.abs(currentV) + accel * (currentTime - oldTime);
 		    oldTime = currentTime;
-		    SmartDashboard.putNumber("Speed", currentV);
 
 		}
 
@@ -107,8 +104,6 @@ public class AutoTurn extends Command {
 	   Robot.driveTrain.tankDrive.arcadeDrive(0, currentV); 
 	}
 
-	 count += 1;
-	 SmartDashboard.putNumber("Loop Counter", count);
 
 	/*
 	 * Robot.driveTrain.tankDrive.arcadeDrive(0, turnspeed); if
@@ -123,7 +118,6 @@ public class AutoTurn extends Command {
     // notes notes notes notes notes notes notes notes notes notes notes notes
     // notesnotes notes notesnotes
     protected boolean isFinished() {
-	SmartDashboard.putBoolean("turn done", finished);
 	return finished || isTimedOut();
     }
 

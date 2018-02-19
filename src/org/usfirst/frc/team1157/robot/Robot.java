@@ -19,6 +19,7 @@ import org.usfirst.frc.team1157.robot.subsystems.Lift;
 import org.usfirst.frc.team1157.robot.subsystems.Manipulator;
 
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoSink;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -58,14 +59,13 @@ public class Robot extends TimedRobot {
 
 		m_oi = new OI();
 
-		CameraServer.getInstance().startAutomaticCapture();
-		//camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
-		//camera = CameraServer.getInstance().startAutomaticCapture(1);
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+		camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+		VideoSink server = CameraServer.getInstance().getServer();
+		server.setSource(camera);
 		//camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
 		// CameraServer.getInstance();
 		// UsbCamera camera2 = CameraServer.getInstance().
-		SmartDashboard.putNumber("auto distance", 5);
-		SmartDashboard.putNumber("auto turn angle", 90);
 		m_chooser.addDefault("Auto Drive Foward", new AutoMove(20, true));
 		m_chooser.addObject("Auto Turn", new AutoTurn(true));
 		m_chooser.addObject("testGroup", new AutoTestGroup());

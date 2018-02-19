@@ -37,17 +37,23 @@ public class ArcadeJoy extends Command {
      */
     protected void execute() {
 	double encoderPos = Robot.lift.liftMotor.getSelectedSensorPosition(0);
-	double damp = 1.0 - (OI.stickSpin.getThrottle() / 2);
+	double TwistDamp = 1.0 - (OI.stickSpin.getThrottle() / 2);
+	double damp = 1;
 	if (encoderPos > 4500 && encoderPos < 9000) {
 	    damp = map(4500, 9000, 1.0, .5, Robot.lift.liftMotor.getSelectedSensorPosition(0));
 	} else if (encoderPos >= 9000) {
 	    damp = .5;
 	}
+	
+	if(OI.stickSpin.getRawButton(1)) {
+	    TwistDamp = 0.7;
+	}
 	double ySpeed = -OI.stickSpin.getY() * damp;
-	double xAxis = OI.stickSpin.getX() * .75 * damp;
-	double zRotation = OI.stickSpin.getZ() * .75 * damp;
-
+	double xAxis = OI.stickSpin.getX() * .75 * TwistDamp;
+	double zRotation = OI.stickSpin.getZ() * .75 * TwistDamp;
+	
 	Robot.driveTrain.tankDrive.arcadeDrive(ySpeed, zRotation, squaredInputs);
+
 	SmartDashboard.putNumber("leftM-Enc", Robot.driveTrain.leftMotor.getSelectedSensorPosition(0));
 	SmartDashboard.putNumber("rightM-Enc", Robot.driveTrain.rightMotor.getSelectedSensorPosition(1));
     }
