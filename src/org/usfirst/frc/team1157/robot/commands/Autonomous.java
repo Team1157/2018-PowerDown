@@ -16,26 +16,25 @@ public class Autonomous extends CommandGroup {
 	Position switchNear;
 	Position scale;
 	Position switchFar;
-	
+
 	String gameData;
-	
+
 	int target = 0;
 
-	
 	public Autonomous(Position pos) {
 		this.start = pos;
-		gameData = "RRL";//DriverStation.getInstance().getGameSpecificMessage();
-		//addSequential(new suckBox());
+		gameData = "RRL";// DriverStation.getInstance().getGameSpecificMessage();
+		// addSequential(new suckBox());
 		if (gameData.charAt(0) == 'L')
 			switchNear = Position.LEFT;
 		else
 			switchNear = Position.RIGHT;
-		
+
 		if (gameData.charAt(1) == 'L')
 			scale = Position.LEFT;
 		else
 			scale = Position.RIGHT;
-		
+
 		if (gameData.charAt(2) == 'L')
 			switchFar = Position.LEFT;
 		else
@@ -54,8 +53,9 @@ public class Autonomous extends CommandGroup {
 			variable = false;
 		else
 			variable = true;
-		
+
 		if (switchNear == start) {
+
 			addSequential(new AutoMove(164, false));
 			addSequential(new AutoTurn(variable));
 			addSequential(new AutoMove(10, false));
@@ -67,26 +67,26 @@ public class Autonomous extends CommandGroup {
 			addSequential(new AutoDropBoxH());
 		} else
 			addSequential(new AutoMove(210, false));
-			addSequential(new AutoTurn(variable));
-			addSequential(new AutoMove(140, false));
+		addSequential(new AutoTurn(variable));
+		addSequential(new AutoMove(140, false));
 
 	}
 
 	private void middle() {
-	    //TODO fix with 90 angles
+		// TODO fix with 90 angles
 		boolean switchLeft;
-		if (switchNear == Position.LEFT) 
+		if (switchNear == Position.LEFT)
 			switchLeft = true;
 		else
 			switchLeft = false;
-		
+
 		addSequential(new AutoMove(50, false));
 		addSequential(new AutoTurn(switchLeft));
 		addSequential(new AutoMove(50, false));
-		addSequential(new AutoTurn(! switchLeft));
+		addSequential(new AutoTurn(!switchLeft));
 		addSequential(new AutoMove(52, false));
 		addSequential(new AutoDropBoxL());
-		
+
 	}
 	// addSequential(new Command2());
 
