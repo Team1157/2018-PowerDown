@@ -2,7 +2,6 @@ package org.usfirst.frc.team1157.robot.subsystems;
 
 import org.usfirst.frc.team1157.robot.RobotMap;
 import org.usfirst.frc.team1157.robot.commands.ArcadeJoy;
-import org.usfirst.frc.team1157.robot.commands.PSTank;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -12,8 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
- * Main drive chain for robot
- * Default command: PSTank
+ * Main drive chain for robot Default command: PSTank
  */
 public class DriveTrain extends Subsystem {
 
@@ -24,7 +22,6 @@ public class DriveTrain extends Subsystem {
 
 	public DifferentialDrive tankDrive = new DifferentialDrive(leftMotor, rightMotor);
 
-	
 	public DriveTrain() {
 		rightSlave.set(ControlMode.Follower, RobotMap.rightMotor);
 		leftSlave.set(ControlMode.Follower, RobotMap.leftMotor);
@@ -33,12 +30,12 @@ public class DriveTrain extends Subsystem {
 		tankDrive.setSafetyEnabled(false);
 
 	}
-	
+
 	public void initDefaultCommand() {
-	    //setDefaultCommand(new PSTank());
-	    //setDefaultCommand(new ArcadeJoy());
-	    setDefaultCommand(new ArcadeJoy());
-		
+		// setDefaultCommand(new PSTank());
+		// setDefaultCommand(new ArcadeJoy());
+		setDefaultCommand(new ArcadeJoy());
+
 	}
 
 	public void stop() {

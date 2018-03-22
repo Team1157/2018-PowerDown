@@ -8,13 +8,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoDropBoxH extends CommandGroup {
 
 	public AutoDropBoxH() {
-		
+
 		addSequential(new LiftGoto(LiftGoto.LiftDestination.TOP));
 		addSequential(new AutoMove(8, false));
 		addSequential(new LaunchBox());
 		addSequential(new AutoMove(8, true));
 		addSequential(new LiftGoto(LiftGoto.LiftDestination.BOTTOM));
-		
+
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());

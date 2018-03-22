@@ -7,8 +7,6 @@
 
 package org.usfirst.frc.team1157.robot;
 
-import javax.swing.text.Position;
-
 import org.usfirst.frc.team1157.robot.commands.AutoMove;
 import org.usfirst.frc.team1157.robot.commands.AutoTestGroup;
 import org.usfirst.frc.team1157.robot.commands.AutoTurn;
@@ -36,7 +34,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
-	
+
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Manipulator manipulator = new Manipulator();
 	public static final Lift lift = new Lift();
@@ -63,7 +61,7 @@ public class Robot extends TimedRobot {
 		camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
 		VideoSink server = CameraServer.getInstance().getServer();
 		server.setSource(camera);
-		//camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+		// camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
 		// CameraServer.getInstance();
 		// UsbCamera camera2 = CameraServer.getInstance().
 		m_chooser.addDefault("Auto Drive Foward", new AutoMove(20, true));

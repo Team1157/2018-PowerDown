@@ -2,7 +2,7 @@
 
 FRC Team 1157 robot code for 2018 season
 
-Commit messages must be concise and descriptive ~Julien
+Commit messages must not be concise and descriptive ~Julien(Drew)
 
 Instructions for setting up your local dev environment:
 

@@ -20,46 +20,41 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	
+
 	// Joysticks
 	// private static boolean ps4 = true;
 	public static Joystick stickSpin = new Joystick(0);
 	public static Joystick stickNoSpin = new Joystick(1);
 	public static Joystick ps = new Joystick(2);
-/* klsjhflkjashdkl();
- *  lkdhfkajhgsku [-0,fj;las
- *  jkghajdghsfkh[q
- *  ' -[0949t6u jflkjh's
- *  */
 
 	// Lift buttons
-	//public JoystickButton liftGotoTop = new JoystickButton(stickNoSpin, 4);
+	// public JoystickButton liftGotoTop = new JoystickButton(stickNoSpin, 4);
 	public JoystickButton boxOut2 = new JoystickButton(stickNoSpin, 3);
 	public JoystickButton boxIn2 = new JoystickButton(stickNoSpin, 1);
 	public JoystickButton liftGotoBottom = new JoystickButton(stickNoSpin, 2);
 	public JoystickButton boxSpin3 = new JoystickButton(stickNoSpin, 4);
 	public JoystickButton boxSpin4 = new JoystickButton(stickNoSpin, 5);
-	
+
 	// Manipulator buttons
 	public JoystickButton liftGotoBottom2 = new JoystickButton(stickSpin, 7);
 	public JoystickButton liftGotoMiddle2 = new JoystickButton(stickSpin, 6);
 	public JoystickButton liftGotoTop2 = new JoystickButton(stickSpin, 5);
-	//public JoystickButton boxIn = new JoystickButton(stickSpin, 1);
+	// public JoystickButton boxIn = new JoystickButton(stickSpin, 1);
 	public JoystickButton boxOut = new JoystickButton(stickSpin, 2);
 	public JoystickButton boxSpin = new JoystickButton(stickSpin, 3);
 	public JoystickButton boxSpin2 = new JoystickButton(stickSpin, 4);
 	public JoystickButton winchIn = new JoystickButton(stickNoSpin, 6);
 	public JoystickButton winchOut = new JoystickButton(stickNoSpin, 7);
-	
+
 	// Initialize buttons
 	public OI() {
-		//liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
-		//liftGotoMiddle.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
+		// liftGotoTop.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
+		// liftGotoMiddle.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
 		liftGotoBottom.whenPressed(new LiftGoto(LiftGoto.LiftDestination.WARNING));
 		liftGotoTop2.whenPressed(new LiftGoto(LiftGoto.LiftDestination.TOP));
 		liftGotoMiddle2.whenPressed(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
 		liftGotoBottom2.whenPressed(new LiftGoto(LiftGoto.LiftDestination.WARNING));
-		//boxIn.whileHeld(new ManBox(1));
+		// boxIn.whileHeld(new ManBox(1));
 		boxIn2.whileHeld(new ManBox(1));
 		boxOut.whileHeld(new ManBox(-1));
 		boxOut2.whileHeld(new ManBox(-1));
