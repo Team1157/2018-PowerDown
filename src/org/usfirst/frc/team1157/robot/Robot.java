@@ -41,6 +41,7 @@ public class Robot extends TimedRobot {
 	public static final Climber climber = new Climber();
 	public static final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	public static OI m_oi;
+	private Autonomous auto = null;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -64,12 +65,12 @@ public class Robot extends TimedRobot {
 		// camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
 		// CameraServer.getInstance();
 		// UsbCamera camera2 = CameraServer.getInstance().
-		m_chooser.addDefault("Auto Drive Foward", new AutoMove(20, true));
+		m_chooser.addDefault("Auto Drive Foward", new AutoMove(20, false));
 		m_chooser.addObject("Auto Turn", new AutoTurn(true));
 		m_chooser.addObject("testGroup", new AutoTestGroup());
-		m_chooser.addObject("auto left", new Autonomous(Autonomous.Position.LEFT));
-		m_chooser.addObject("auto middke", new Autonomous(Autonomous.Position.MIDDLE));
-		m_chooser.addObject("auto r", new Autonomous(Autonomous.Position.RIGHT));
+		m_chooser.addObject("auto left", auto = new Autonomous(Autonomous.Position.LEFT));
+		m_chooser.addObject("auto middle", auto = new Autonomous(Autonomous.Position.MIDDLE));
+		m_chooser.addObject("auto right", auto = new Autonomous(Autonomous.Position.RIGHT));
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 	}
@@ -113,6 +114,9 @@ public class Robot extends TimedRobot {
 		 * ExampleCommand(); break; }
 		 */
 
+		if (auto != null) {
+			auto.setup();
+		}
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();

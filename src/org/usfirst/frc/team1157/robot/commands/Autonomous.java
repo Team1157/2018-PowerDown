@@ -2,6 +2,7 @@ package org.usfirst.frc.team1157.robot.commands;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Full control of robot during autonomous
@@ -23,7 +24,13 @@ public class Autonomous extends CommandGroup {
 
 	public Autonomous(Position pos) {
 		this.start = pos;
-		gameData = "RRL";// DriverStation.getInstance().getGameSpecificMessage();
+		SmartDashboard.putBoolean("autoDone", false);
+	}
+	
+	public void setup() {
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		if (gameData.length() < 3) gameData = "ERROR";
+		SmartDashboard.putString("gameData", gameData);
 		// addSequential(new suckBox());
 		if (gameData.charAt(0) == 'L')
 			switchNear = Position.LEFT;
@@ -65,28 +72,36 @@ public class Autonomous extends CommandGroup {
 			addSequential(new AutoTurn(variable));
 			addSequential(new AutoMove(10, true));
 			addSequential(new AutoDropBoxH());
-		} else
+		} else {
 			addSequential(new AutoMove(210, false));
-		addSequential(new AutoTurn(variable));
-		addSequential(new AutoMove(140, false));
-
+			addSequential(new AutoTurn(variable));
+			addSequential(new AutoMove(140, false));
+		}
+		SmartDashboard.putBoolean("autoDone", true);
 	}
 
 	private void middle() {
 		// TODO fix with 90 angles
 		boolean switchLeft;
-		if (switchNear == Position.LEFT)
+		if (switchNear == Position.LEFT) {
 			switchLeft = true;
-		else
+			addSequential(new AutoMove(50, false));
+			addSequential(new AutoTurn(switchLeft));
+			addSequential(new AutoMove(55, false));
+			addSequential(new AutoTurn(!switchLeft));
+			addSequential(new AutoMove(50, false));
+			addSequential(new AutoDropBoxL());
+		} else {
 			switchLeft = false;
 
-		addSequential(new AutoMove(50, false));
-		addSequential(new AutoTurn(switchLeft));
-		addSequential(new AutoMove(50, false));
-		addSequential(new AutoTurn(!switchLeft));
-		addSequential(new AutoMove(52, false));
-		addSequential(new AutoDropBoxL());
-
+			addSequential(new AutoMove(50, false));
+			addSequential(new AutoTurn(switchLeft));
+			addSequential(new AutoMove(45, false));
+			addSequential(new AutoTurn(!switchLeft));
+			addSequential(new AutoMove(50, false));
+			addSequential(new AutoDropBoxL());
+		}
+		SmartDashboard.putBoolean("autoDone", true);
 	}
 	// addSequential(new Command2());
 

@@ -49,7 +49,7 @@ public class ArcadeJoy extends Command {
 			TwistDamp = 0.7;
 		}
 		double ySpeed = -OI.stickSpin.getY() * damp;
-		double xAxis = OI.stickSpin.getX() * .75 * TwistDamp;
+		//double xAxis = OI.stickSpin.getX() * .75 * TwistDamp;
 		double zRotation = OI.stickSpin.getZ() * .75 * TwistDamp;
 
 		Robot.driveTrain.tankDrive.arcadeDrive(ySpeed, zRotation, squaredInputs);

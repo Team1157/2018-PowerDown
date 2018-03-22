@@ -44,7 +44,9 @@ public class OI {
 	public JoystickButton boxSpin = new JoystickButton(stickSpin, 3);
 	public JoystickButton boxSpin2 = new JoystickButton(stickSpin, 4);
 	public JoystickButton winchIn = new JoystickButton(stickNoSpin, 6);
-	public JoystickButton winchOut = new JoystickButton(stickNoSpin, 7);
+	public JoystickButton winchIn2 = new JoystickButton(stickNoSpin, 7);
+	public JoystickButton winchOut = new JoystickButton(stickNoSpin, 10);
+	public JoystickButton winchOut2 = new JoystickButton(stickNoSpin, 11);
 
 	// Initialize buttons
 	public OI() {
@@ -63,7 +65,9 @@ public class OI {
 		boxSpin3.whileActive(new TurnBox(1));
 		boxSpin4.whileActive(new TurnBox(-1));
 		winchIn.whileHeld(new WinchDrive(1));
+		winchIn2.whileHeld(new WinchDrive(1));
 		winchOut.whileHeld(new WinchDrive(-1));
+		winchOut2.whileHeld(new WinchDrive(-1));
 	}
 
 }
