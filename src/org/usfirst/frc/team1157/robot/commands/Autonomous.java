@@ -26,10 +26,11 @@ public class Autonomous extends CommandGroup {
 		this.start = pos;
 		SmartDashboard.putBoolean("autoDone", false);
 	}
-	
-	public void setup() {
+
+	public void load() {
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if (gameData.length() < 3) gameData = "ERROR";
+		if (gameData.length() < 3)
+			gameData = "ERROR";
 		SmartDashboard.putString("gameData", gameData);
 		// addSequential(new suckBox());
 		if (gameData.charAt(0) == 'L')

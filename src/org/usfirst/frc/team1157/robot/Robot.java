@@ -68,9 +68,9 @@ public class Robot extends TimedRobot {
 		m_chooser.addDefault("Auto Drive Foward", new AutoMove(20, false));
 		m_chooser.addObject("Auto Turn", new AutoTurn(true));
 		m_chooser.addObject("testGroup", new AutoTestGroup());
-		m_chooser.addObject("auto left", auto = new Autonomous(Autonomous.Position.LEFT));
-		m_chooser.addObject("auto middle", auto = new Autonomous(Autonomous.Position.MIDDLE));
-		m_chooser.addObject("auto right", auto = new Autonomous(Autonomous.Position.RIGHT));
+		m_chooser.addObject("auto left", new Autonomous(Autonomous.Position.LEFT));
+		m_chooser.addObject("auto middle", new Autonomous(Autonomous.Position.MIDDLE));
+		m_chooser.addObject("auto right", new Autonomous(Autonomous.Position.RIGHT));
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 	}
@@ -114,11 +114,11 @@ public class Robot extends TimedRobot {
 		 * ExampleCommand(); break; }
 		 */
 
-		if (auto != null) {
-			auto.setup();
-		}
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
+			if (m_autonomousCommand instanceof Autonomous)
+				((Autonomous) m_autonomousCommand).load();
+			
 			m_autonomousCommand.start();
 		}
 	}
@@ -156,9 +156,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void testPeriodic() {
 		// Send encoder positions
-		//SmartDashboard.putNumber("Lift Position", lift.liftMotor.getSelectedSensorPosition(0));
-		//SmartDashboard.putNumber("Left Motor Position", driveTrain.leftMotor.getSelectedSensorPosition(0));
-		//SmartDashboard.putNumber("Right Motor Position", driveTrain.rightMotor.getSelectedSensorPosition(0));
-		//SmartDashboard.putNumber("Gyro", gyro.getAngle());
+		// SmartDashboard.putNumber("Lift Position",
+		// lift.liftMotor.getSelectedSensorPosition(0));
+		// SmartDashboard.putNumber("Left Motor Position",
+		// driveTrain.leftMotor.getSelectedSensorPosition(0));
+		// SmartDashboard.putNumber("Right Motor Position",
+		// driveTrain.rightMotor.getSelectedSensorPosition(0));
+		// SmartDashboard.putNumber("Gyro", gyro.getAngle());
 	}
 }

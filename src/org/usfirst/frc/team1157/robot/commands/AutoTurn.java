@@ -33,7 +33,7 @@ public class AutoTurn extends Command {
 		requires(Robot.driveTrain);
 
 		this.turnLeft = turnLeft;
-		setTimeout(10);
+		setTimeout(5);
 
 		this.timer = new Timer();
 		timer.start();
