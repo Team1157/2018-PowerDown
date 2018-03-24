@@ -41,7 +41,6 @@ public class Robot extends TimedRobot {
 	public static final Climber climber = new Climber();
 	public static final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	public static OI m_oi;
-	private Autonomous auto = null;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -49,10 +48,6 @@ public class Robot extends TimedRobot {
 	private static final int IMG_WIDTH = 640;
 	private static final int IMG_HEIGHT = 360;
 
-	/**
-	 * This function is run when the robot is first started up and should be used
-	 * for any initialization code.
-	 */
 	@Override
 	public void robotInit() {
 
@@ -75,11 +70,6 @@ public class Robot extends TimedRobot {
 
 	}
 
-	/**
-	 * This function is called once each time the robot enters Disabled mode. You
-	 * can use it to reset any subsystem information you want to clear when the
-	 * robot is disabled.
-	 */
 	@Override
 	public void disabledInit() {
 
@@ -123,9 +113,6 @@ public class Robot extends TimedRobot {
 		}
 	}
 
-	/**
-	 * This function is called periodically during autonomous.
-	 */
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
@@ -138,21 +125,15 @@ public class Robot extends TimedRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
+//			m_autonomousCommand.cancel();
 		}
 	}
 
-	/**
-	 * This function is called periodically during operator control.
-	 */
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This function is called periodically during test mode.
-	 */
 	@Override
 	public void testPeriodic() {
 		// Send encoder positions

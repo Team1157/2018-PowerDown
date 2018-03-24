@@ -8,9 +8,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoDropBoxL extends CommandGroup {
 
 	public AutoDropBoxL() {
-		
 		addSequential(new LiftGoto(LiftGoto.LiftDestination.MIDDLE));
-		addSequential(new AutoMove(6, false));
+		//addSequential(new AutoMove(6, false));
 		addSequential(new LaunchBox());
 		addSequential(new AutoMove(6, true));
 		addSequential(new LiftGoto(LiftGoto.LiftDestination.BOTTOM));

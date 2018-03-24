@@ -53,6 +53,7 @@ public class Autonomous extends CommandGroup {
 		else
 			notMiddle();
 
+		SmartDashboard.putBoolean("autoDone", true);
 	}
 
 	private void notMiddle() {
@@ -64,21 +65,20 @@ public class Autonomous extends CommandGroup {
 
 		if (switchNear == start) {
 
-			addSequential(new AutoMove(164, false));
-			addSequential(new AutoTurn(variable));
-			addSequential(new AutoMove(10, false));
-			addSequential(new AutoDropBoxL());
+			addSequential(new AutoMove(164, false));	// Forward
+			addSequential(new AutoTurn(variable));		// Turn 90
+			addSequential(new AutoMove(10, false));		// Move to switch
+			addSequential(new AutoDropBoxL());			// Drop
 		} else if (scale == start) {
-			addSequential(new AutoMove(312, false));
-			addSequential(new AutoTurn(variable));
-			addSequential(new AutoMove(10, true));
-			addSequential(new AutoDropBoxH());
+			addSequential(new AutoMove(312, false));	// Forward
+			addSequential(new AutoTurn(variable));		// Turn 90
+			addSequential(new AutoMove(10, true));		// Move up to scale
+			addSequential(new AutoDropBoxH());			// Drop
 		} else {
-			addSequential(new AutoMove(210, false));
-			addSequential(new AutoTurn(variable));
-			addSequential(new AutoMove(140, false));
+			addSequential(new AutoMove(220, false));	// Forward
+			addSequential(new AutoTurn(variable));		// Turn 90
+			addSequential(new AutoMove(140, false));	// Drive to 1/2 feild
 		}
-		SmartDashboard.putBoolean("autoDone", true);
 	}
 
 	private void middle() {
@@ -86,27 +86,26 @@ public class Autonomous extends CommandGroup {
 		boolean switchLeft;
 		if (switchNear == Position.LEFT) {
 			switchLeft = true;
-			addSequential(new AutoMove(50, false));
-			addSequential(new AutoTurn(switchLeft));
-			addSequential(new AutoMove(55, false));
-			addSequential(new AutoTurn(!switchLeft));
-			addSequential(new AutoMove(50, false));
-			addSequential(new AutoDropBoxL());
+			addSequential(new AutoMove(50, false));		// Forward
+			addSequential(new AutoTurn(switchLeft));	// Turn 90
+			addSequential(new AutoMove(57, false));		// Side
+			addSequential(new AutoTurn(!switchLeft));	// Turn 90
+			addSequential(new AutoMove(52, false));		// Forward
+			addSequential(new AutoDropBoxL());			// Drop
 		} else {
 			switchLeft = false;
 
-			addSequential(new AutoMove(50, false));
-			addSequential(new AutoTurn(switchLeft));
-			addSequential(new AutoMove(45, false));
-			addSequential(new AutoTurn(!switchLeft));
-			addSequential(new AutoMove(50, false));
-			addSequential(new AutoDropBoxL());
+			addSequential(new AutoMove(50, false));		// Forward
+			addSequential(new AutoTurn(switchLeft));	// Turn 90
+			addSequential(new AutoMove(46, false));		// Side
+			addSequential(new AutoTurn(!switchLeft));	// Turn 90
+			addSequential(new AutoMove(50, false));		// Forward
+			addSequential(new AutoDropBoxL());			// Drop
 		}
-		SmartDashboard.putBoolean("autoDone", true);
 	}
 	// addSequential(new Command2());
 
-	// To run multiple commands at the same time,
+	// To run multiple commands at the same time,a
 	// use addParallel()
 	// e.g. addParallel(new Command1());
 	// addSequential(new Command2());

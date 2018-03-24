@@ -17,7 +17,7 @@ public class AutoMove extends Command {
 	double currentV = 0;
 	double minV = .3;
 	double maxV = 1;
-	double accel = .3;
+	double accel = .7;
 	double currentTime = 0;
 	double oldTime = 0;
 
