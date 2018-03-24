@@ -63,18 +63,19 @@ public class Autonomous extends CommandGroup {
 		else
 			variable = true;
 
-		if (switchNear == start) {
+		if (scale == start) {
+			
+			addSequential(new AutoMove(312, false));	// Forward
+			addSequential(new AutoTurn(variable));		// Turn 90
+			addSequential(new AutoMove(10, true));		// Move up to scale
+			addSequential(new AutoDropBoxH());			// Drop
+		} else /* if (switchNear == start) {
 
 			addSequential(new AutoMove(164, false));	// Forward
 			addSequential(new AutoTurn(variable));		// Turn 90
 			addSequential(new AutoMove(10, false));		// Move to switch
 			addSequential(new AutoDropBoxL());			// Drop
-		} else if (scale == start) {
-			addSequential(new AutoMove(312, false));	// Forward
-			addSequential(new AutoTurn(variable));		// Turn 90
-			addSequential(new AutoMove(10, true));		// Move up to scale
-			addSequential(new AutoDropBoxH());			// Drop
-		} else {
+		} else*/  {
 			addSequential(new AutoMove(220, false));	// Forward
 			addSequential(new AutoTurn(variable));		// Turn 90
 			addSequential(new AutoMove(140, false));	// Drive to 1/2 feild
